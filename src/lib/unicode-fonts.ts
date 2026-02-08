@@ -58,6 +58,10 @@ const isCjk = (code: number): boolean =>
   (code >= 0x4e00 && code <= 0x9fff) ||
   (code >= 0x3400 && code <= 0x4dbf);
 
+/** Check if a character is CJK (for use in other modules). */
+export const isCjkChar = (char: string): boolean =>
+  isCjk(char.codePointAt(0)!);
+
 /**
  * Convert a single character to its Unicode styled equivalent.
  * Returns the original character if no conversion applies.

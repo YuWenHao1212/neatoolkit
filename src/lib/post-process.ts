@@ -11,11 +11,16 @@ const ZWSP = "\u200B";
 // CJK Unified Ideographs + CJK Extension A
 const CJK_RANGE = "\\u4e00-\\u9fff\\u3400-\\u4dbf";
 
-// CJK followed by word character (alphanumeric + underscore)
-const CJK_THEN_WORD = new RegExp(`([${CJK_RANGE}])([\\w])`, "g");
+// ASCII word chars + Unicode Mathematical Alphanumeric Symbols
+// U+1D5D4–U+1D7FF covers Sans-Serif Bold/Italic/BoldItalic + Monospace letters & digits
+// U+210E is the Planck constant (italic h exception)
+const WORD_RANGE = "\\w\\u{1D5D4}-\\u{1D7FF}\\u{210E}";
+
+// CJK followed by word character
+const CJK_THEN_WORD = new RegExp(`([${CJK_RANGE}])([${WORD_RANGE}])`, "gu");
 
 // Word character followed by CJK
-const WORD_THEN_CJK = new RegExp(`([\\w])([${CJK_RANGE}])`, "g");
+const WORD_THEN_CJK = new RegExp(`([${WORD_RANGE}])([${CJK_RANGE}])`, "gu");
 
 /**
  * Insert Zero-Width Space (U+200B) in blank lines to preserve

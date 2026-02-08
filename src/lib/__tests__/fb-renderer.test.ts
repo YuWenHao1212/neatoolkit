@@ -67,6 +67,27 @@ describe("convertMarkdownToFb", () => {
     });
   });
 
+  describe("strikethrough (del)", () => {
+    it("applies combining long stroke overlay to English text", () => {
+      const result = convertMarkdownToFb("~~hello~~", structured);
+      // Each char gets U+0336 appended: h̶e̶l̶l̶o̶
+      expect(result).toContain("h\u0336e\u0336l\u0336l\u0336o\u0336");
+    });
+
+    it("passes through CJK characters without combining overlay", () => {
+      const result = convertMarkdownToFb("~~\u4F60\u597D~~", structured);
+      // CJK should NOT have U+0336 — just plain passthrough
+      expect(result).toContain("\u4F60\u597D");
+      expect(result).not.toContain("\u4F60\u0336");
+    });
+
+    it("applies overlay to English but not CJK in mixed content", () => {
+      const result = convertMarkdownToFb("~~Hi\u4F60\u597D~~", structured);
+      expect(result).toContain("H\u0336i\u0336\u4F60\u597D");
+      expect(result).not.toContain("\u4F60\u0336");
+    });
+  });
+
   describe("unordered list", () => {
     it("renders unordered list items with config listItem", () => {
       const result = convertMarkdownToFb("- apple\n- banana", structured);

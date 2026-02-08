@@ -1,5 +1,5 @@
 import { marked, type Tokens, type RendererObject } from "marked";
-import { convertToUnicode } from "@/lib/unicode-fonts";
+import { convertToUnicode, isCjkChar } from "@/lib/unicode-fonts";
 import type { SymbolConfig } from "@/lib/symbol-configs";
 
 // Strip HTML tags and decode common HTML entities
@@ -46,6 +46,14 @@ export const convertMarkdownToFb = (
         this.parser.parseInline(token.tokens)
       );
       return convertToUnicode(text, "sansSerifItalic");
+    },
+
+    del(token: Tokens.Del) {
+      const text = stripHtml(
+        this.parser.parseInline(token.tokens)
+      );
+      // U+0336 COMBINING LONG STROKE OVERLAY — CJK passthrough (renders as boxes)
+      return [...text].map((ch) => isCjkChar(ch) ? ch : ch + "\u0336").join("");
     },
 
     codespan(token: Tokens.Codespan) {
@@ -97,6 +105,10 @@ export const convertMarkdownToFb = (
       return config.blockquote(text) + "\n\n";
     },
 
+    br() {
+      return "\n";
+    },
+
     hr() {
       return config.hr + "\n\n";
     },
@@ -142,7 +154,7 @@ export const convertMarkdownToFb = (
 
   marked.use({ renderer });
 
-  const raw = marked.parse(markdown, { async: false }) as string;
+  const raw = marked.parse(markdown, { async: false, breaks: true }) as string;
 
   return collapseNewlines(raw).trim() + "\n";
 };

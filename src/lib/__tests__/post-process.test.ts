@@ -90,6 +90,37 @@ describe("panguSpacing", () => {
     // \w includes underscore
     expect(panguSpacing("\u4e2d_test")).toBe("\u4e2d _test");
   });
+
+  it("inserts space around Unicode Sans-Serif Bold letters adjacent to CJK", () => {
+    // 𝗠𝗮𝗰 = U+1D5E0 U+1D5EE U+1D5F0 (Sans-Serif Bold M, a, c)
+    const boldMac = "\u{1D5E0}\u{1D5EE}\u{1D5F0}";
+    expect(panguSpacing(`\u6211\u7528${boldMac}\u5beb\u6587`)).toBe(
+      `\u6211\u7528 ${boldMac} \u5beb\u6587`
+    );
+  });
+
+  it("inserts space around Unicode Sans-Serif Bold digits adjacent to CJK", () => {
+    // 𝟯 = U+1D7EF (Sans-Serif Bold digit 3)
+    const boldThree = "\u{1D7EF}";
+    expect(panguSpacing(`\u7b2c${boldThree}\u7ae0`)).toBe(
+      `\u7b2c ${boldThree} \u7ae0`
+    );
+  });
+
+  it("inserts space around Unicode Monospace letters adjacent to CJK", () => {
+    // 𝚌𝚘𝚍𝚎 = U+1D68C U+1D698 U+1D691 U+1D692 (Monospace c, o, d, e)
+    const monoCode = "\u{1D68C}\u{1D698}\u{1D691}\u{1D692}";
+    expect(panguSpacing(`\u7528${monoCode}\u5beb`)).toBe(
+      `\u7528 ${monoCode} \u5beb`
+    );
+  });
+
+  it("inserts space around italic h exception (U+210E) adjacent to CJK", () => {
+    const italicH = "\u{210E}";
+    expect(panguSpacing(`\u6211${italicH}\u4f60`)).toBe(
+      `\u6211 ${italicH} \u4f60`
+    );
+  });
 });
 
 describe("postProcess", () => {
