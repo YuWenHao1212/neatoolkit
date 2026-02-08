@@ -1,34 +1,50 @@
-# MD → FB Formatting Tool — Design Document
+# FB Post Formatter — Design Document
 
 ## Overview
 
 A client-side tool that converts Markdown text into Facebook-optimized plain text with Unicode formatting, smart line spacing, and optional Pangu spacing for CJK content.
 
-**URL**: `/text/md-to-fb`
-**Tech**: Next.js 14 App Router + TypeScript + Tailwind + `marked`
+**URL**: `/[locale]/text/fb-post-formatter` (locale: `zh-TW`, `en`)
+**Tech**: Next.js 16 App Router + TypeScript + Tailwind CSS v4 + `marked` + `next-intl`
 **Cost**: Zero (pure frontend, no backend)
+**Status**: ✅ Implemented (2026-02-08)
+
+### Decision Log
+
+| Decision | Rationale |
+|----------|-----------|
+| Renamed `md-to-fb` → `fb-post-formatter` | SEO: "facebook post formatter" matches user search intent better than "markdown to facebook". Phase 0 split into two pages (font-generator + fb-post-formatter) because user intents differ — one page per intent is cleaner for SEO. |
+| Added i18n (next-intl) | zh-TW is primary market (Taiwan tool site positioning per Cockpit strategy). English covers long-tail SEO traffic. |
+| Removed StyleSelector as standalone component | Simplified UI — style switching and Pangu toggle integrated directly into Editor, reducing prop drilling and component layers. |
+| Extended Pangu regex to Unicode Mathematical range | Original `\w` couldn't match converted Unicode Bold/Italic characters, causing Pangu spacing to fail on rendered output. |
+| Added fb-audit module | External link detection is a core UX need — warns users that outbound URLs reduce Facebook reach. |
 
 ---
 
 ## Architecture
 
 ```
-User input (textarea)
+User input (textarea with backdrop highlighting)
        |
-       v  (debounce 150ms)
-   marked.parse() with custom renderer
+       v  (useMemo — recomputes on input/style/pangu change)
+   marked.parse() with custom renderer (breaks: true)
        |  receives symbolConfig based on active style
        |
        v
    Post-processing pipeline:
        |  1. ZWSP blank line preservation (always on)
-       |  2. Pangu CJK spacing (toggle)
+       |  2. Pangu CJK spacing (toggle, covers Unicode Math Alphanumerics)
        |
        v
-   Preview pane (plain text)
+   Audit checks:
+       |  - External link detection (fb-audit.ts)
+       |  - CJK-in-markdown-markers warning (backdrop overlay)
        |
-       v  user clicks "Copy All"
-   Clipboard API
+       v
+   Preview pane (plain text, URL highlighting)
+       |
+       v  user clicks "Copy"
+   Clipboard API (with execCommand fallback)
 ```
 
 ---
@@ -38,23 +54,42 @@ User input (textarea)
 ```
 src/
 ├── app/
-│   └── text/
-│       └── md-to-fb/
-│           └── page.tsx              # Page entry + SEO meta
+│   ├── layout.tsx                    # Root layout (imports globals.css, delegates to [locale])
+│   └── [locale]/
+│       ├── layout.tsx                # Locale layout (HTML/body, fonts, i18n provider)
+│       ├── page.tsx                  # Home (redirects to fb-post-formatter)
+│       └── text/
+│           └── fb-post-formatter/
+│               └── page.tsx          # Page entry + i18n SEO meta + FAQ
 │
 ├── components/
-│   └── md-to-fb/
-│       ├── Editor.tsx                # Two-column layout + state
-│       ├── MarkdownInput.tsx         # Left: textarea
-│       ├── FbPreview.tsx             # Right: preview + copy button
-│       └── StyleSelector.tsx         # Style chips + Pangu toggle
+│   ├── fb-post-formatter/
+│   │   ├── Editor.tsx                # Two-column layout + state + style/pangu controls
+│   │   ├── MarkdownInput.tsx         # Left: textarea + backdrop highlighting
+│   │   └── FbPreview.tsx             # Right: preview + copy button + URL highlighting
+│   └── layout/
+│       ├── Header.tsx                # Navigation header
+│       ├── Footer.tsx                # Footer with links
+│       └── LocaleSwitcher.tsx        # zh-TW / en toggle
 │
 ├── lib/
-│   ├── unicode-fonts.ts              # Unicode offset table + exceptions (shared with font-generator)
-│   ├── fb-renderer.ts               # marked custom renderer (core conversion)
+│   ├── unicode-fonts.ts              # Unicode offset table + exceptions + isCjkChar export
+│   ├── fb-renderer.ts               # marked custom renderer (core conversion, breaks: true)
 │   ├── symbol-configs.ts            # Three style symbol tables
-│   ├── post-process.ts              # ZWSP + Pangu pipeline
-│   └── clipboard.ts                 # Clipboard API wrapper
+│   ├── post-process.ts              # ZWSP + Pangu pipeline (Unicode-aware regex)
+│   ├── fb-audit.ts                  # External link detection
+│   └── clipboard.ts                 # Clipboard API wrapper with fallback
+│
+├── i18n/
+│   ├── routing.ts                    # Locale config (zh-TW default, en)
+│   ├── request.ts                    # Server-side i18n setup
+│   └── navigation.ts                # i18n-aware Link, redirect, useRouter
+│
+├── middleware.ts                     # next-intl routing middleware
+│
+messages/
+├── zh-TW.json                        # 76 translation keys
+└── en.json                           # 76 translation keys
 ```
 
 ---
@@ -79,6 +114,8 @@ Uses `marked` with a custom renderer. Each Markdown token maps to plain text + U
 | `strong` | English → Sans-Serif Bold Unicode (U+1D5D4 range), CJK passthrough |
 | `em` | English → Sans-Serif Italic Unicode (U+1D608 range), CJK passthrough |
 | `strong + em` | English → Sans-Serif Bold Italic Unicode (U+1D63C range), CJK passthrough |
+| `del` (strikethrough) | ✅ U+0336 Combining Long Stroke Overlay per char, CJK passthrough |
+| `br` | ✅ Single line break (`\n`), enabled via `breaks: true` in marked config |
 | `link` | `text (url)` plain text expansion |
 | `image` | `[image: alt]` |
 | `table` | Each row → key:value list (see Table Conversion) |
@@ -178,58 +215,73 @@ Output: \n\u200B\n\u200B\n
 
 ### 2. Pangu CJK Spacing (toggle, off by default)
 
-Insert half-width space between CJK characters and ASCII alphanumeric/symbols.
+Insert half-width space between CJK characters and ASCII/Unicode alphanumeric characters.
 
 ```
 Input:  "I use Mac to write code"  → no change
 Input:  "我用Mac寫code"            → "我用 Mac 寫 code"
+Input:  "我用𝗠𝗮𝗰寫文"              → "我用 𝗠𝗮𝗰 寫文"  (Unicode Bold also matched)
 ```
 
-Regex patterns:
+Regex patterns (updated to cover Unicode Mathematical Alphanumerics):
 ```
-/([\u4e00-\u9fff\u3400-\u4dbf])([\w])/g → "$1 $2"
-/([\w])([\u4e00-\u9fff\u3400-\u4dbf])/g → "$1 $2"
+Word range: \w + U+1D5D4–U+1D7FF (Bold/Italic/Monospace) + U+210E (italic h)
+CJK range:  U+4E00–U+9FFF + U+3400–U+4DBF
+
+/(CJK)(WORD)/gu → "$1 $2"
+/(WORD)(CJK)/gu → "$1 $2"
 ```
+
+> **Why extended**: After Unicode font conversion, bold/italic characters fall outside `\w` range.
+> Without this extension, Pangu spacing would not insert spaces around converted text.
 
 ---
 
 ## UI Components
 
-### StyleSelector.tsx
+> **Note**: StyleSelector was removed as a standalone component. Style switching and Pangu toggle
+> are integrated directly into Editor.tsx to reduce prop drilling.
 
-Single row containing:
-- Three style chips: 極簡 / **結構**（active default） / 社群
-- Active chip: gold fill (#CA8A04) + white text
-- Inactive chip: border + ink-600 text
-- Pangu toggle button on the right side of the same row
-- Toggle states: off (outlined) / on (gold fill)
-
-### Editor.tsx (state management)
+### Editor.tsx (state management + controls)
 
 ```typescript
 State:
 - markdownInput: string
-- activeStyle: 'minimal' | 'structured' | 'social'
 - panguEnabled: boolean
-- copyFeedback: boolean (for "Copied!" flash)
 
-Derived:
-- fbOutput: computed from markdownInput + activeStyle + panguEnabled
+Derived (useMemo):
+- fbOutput: computed from markdownInput + STYLE_CONFIGS.structured + panguEnabled
+- hasLinks: fb-audit external link detection
+
+UI includes:
+- Pangu spacing toggle
+- Conditional hints: CJK-in-markdown warning, external link warning
 ```
+
+> **Note**: Style is currently fixed to "structured" (default). The three-style UI was
+> simplified during implementation. Style configs remain in code for future use.
 
 ### MarkdownInput.tsx
 
-- Left column, textarea with monospace font (JetBrains Mono)
-- Header bar: "Markdown Input" + hint text
+- Left column, textarea with monospace font
+- **Backdrop highlighting**: CJK characters inside markdown bold/italic markers
+  shown with amber background overlay to warn users these won't convert
+- Header bar: i18n label + character counter
 - Max 5000 characters
 
 ### FbPreview.tsx
 
-- Right column, rendered preview in Inter font
-- Header bar: "FB Preview" + gold "Copy All" button
-- Copy button shows "Copied!" for 1.5s after click
+- Right column, rendered preview in sans-serif font
+- Copy button with "Copied!" flash (1.5s)
+- **URL highlighting**: External links shown with visual emphasis
 - Desktop: side-by-side with MarkdownInput
 - Mobile: stacked below MarkdownInput
+
+### Layout Components (new)
+
+- **Header.tsx**: Navigation header with tool links
+- **Footer.tsx**: Footer with "Made by" attribution + links
+- **LocaleSwitcher.tsx**: zh-TW / en language toggle
 
 ---
 
@@ -259,19 +311,28 @@ Derived:
 
 ## SEO Plan
 
-**Meta Tags**:
+**i18n SEO**: Each locale has its own metadata via `getTranslations()`.
+
+**zh-TW Meta Tags**:
 ```
-Title: Markdown to FB Post Formatting — Convert Markdown to Facebook Text | FreeTools
-Description: Free online Markdown to Facebook formatting tool. Supports bold, headings, lists, dividers. Paste Markdown, preview Facebook format, one-click copy.
-H1: Markdown → FB Formatting Tool
+Title: Facebook 貼文排版工具 — Markdown 轉 FB 格式化文字 | FreeTools
+Description: 免費線上 Facebook 貼文排版工具。支援粗體、標題、列表、分隔線。貼上 Markdown，預覽 Facebook 格式，一鍵複製。
+H1: Facebook 貼文排版工具
 ```
 
-**Schema Markup**: WebApplication + FAQPage + HowTo
+**en Meta Tags**:
+```
+Title: Facebook Post Formatter — Convert Markdown to FB Formatted Text | FreeTools
+Description: Free online Facebook post formatting tool. Supports bold, headings, lists, dividers. Paste Markdown, preview Facebook format, one-click copy.
+H1: Facebook Post Formatter
+```
 
-**FAQ Topics**:
-1. Can you bold text in FB posts?
-2. Why doesn't Chinese bold text change?
-3. What Markdown syntax is supported?
+**Schema Markup**: WebApplication + FAQPage + HowTo (planned)
+
+**FAQ Topics** (bilingual):
+1. Can you bold text in FB posts? / FB 貼文可以使用粗體嗎？
+2. Why doesn't Chinese bold text change? / 為什麼中文粗體沒有變化？
+3. What Markdown syntax is supported? / 支援哪些 Markdown 語法？
 
 ---
 
@@ -280,10 +341,12 @@ H1: Markdown → FB Formatting Tool
 | Package | Purpose | Size (gzipped) |
 |---------|---------|----------------|
 | `marked` | Markdown parser | ~12KB |
+| `next-intl` | i18n routing & translations | ~15KB |
 | (none others) | All conversion is custom code | — |
 
 ---
 
 **Created**: 2026-02-08
-**Status**: Approved (brainstorming complete)
-**Next Step**: Implementation via superpowers:writing-plans
+**Status**: ✅ Implemented
+**Completed**: 2026-02-08
+**Commits**: 6 commits (i18n → layout → components → renderer → audit → docs)

@@ -1,12 +1,24 @@
-# MD → FB Formatting Tool — Implementation Plan
+# FB Post Formatter — Implementation Plan
 
-> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
+> **Status**: ✅ All tasks completed (2026-02-08)
 
-**Goal:** Build a client-side Markdown-to-Facebook formatting tool at `/text/md-to-fb` that converts Markdown into Unicode-formatted plain text with style options, ZWSP spacing, and optional Pangu CJK spacing.
+**Goal:** Build a client-side Markdown-to-Facebook formatting tool at `/[locale]/text/fb-post-formatter` that converts Markdown into Unicode-formatted plain text with style options, ZWSP spacing, and optional Pangu CJK spacing.
 
 **Architecture:** Uses `marked` library with a custom renderer that maps Markdown tokens to plain-text Unicode output. Three interchangeable style configs control structural symbols (headings, lists, etc.). Post-processing pipeline handles ZWSP blank-line preservation and Pangu spacing. All client-side, zero backend.
 
-**Tech Stack:** Next.js 16 (App Router), TypeScript, Tailwind CSS v4, `marked` library
+**Tech Stack:** Next.js 16 (App Router), TypeScript, Tailwind CSS v4, `marked` library, `next-intl` (i18n)
+
+### Decision Log
+
+| Decision | Rationale |
+|----------|-----------|
+| Renamed `md-to-fb` → `fb-post-formatter` | SEO: "facebook post formatter" matches user search intent. Cockpit SEO research (DataForSEO 2026-02-08) informed keyword choice. Phase 0 split into two pages per intent. |
+| Added i18n with next-intl | zh-TW primary market per Cockpit freetools strategy. English for long-tail SEO. |
+| Removed StyleSelector component | Integrated into Editor.tsx — simpler architecture, less prop drilling. |
+| Extended Pangu regex | `\w` doesn't match Unicode Mathematical Alphanumerics (U+1D5D4–U+1D7FF). Extended for correct spacing around converted bold/italic text. |
+| Added `breaks: true` to marked | Preserves single `\n` line breaks — critical for Facebook post formatting where users expect WYSIWYG line breaks. |
+| Added del (strikethrough) renderer | Uses U+0336 Combining Long Stroke Overlay with CJK passthrough (CJK + combining char renders as boxes). |
+| Added fb-audit module | External links reduce Facebook reach — core UX warning feature. |
 
 ---
 
@@ -57,7 +69,7 @@ export default defineConfig({
 
 ---
 
-### Task 1: Unicode Conversion Module (`unicode-fonts.ts`)
+### Task 1: Unicode Conversion Module (`unicode-fonts.ts`) ✅
 
 **Files:**
 - Create: `src/lib/unicode-fonts.ts`
@@ -259,7 +271,7 @@ git commit -m "feat: add unicode font conversion module with tests"
 
 ---
 
-### Task 2: Style Configs (`symbol-configs.ts`)
+### Task 2: Style Configs (`symbol-configs.ts`) ✅
 
 **Files:**
 - Create: `src/lib/symbol-configs.ts`
@@ -441,7 +453,7 @@ git commit -m "feat: add three style configs for FB formatting"
 
 ---
 
-### Task 3: Post-Processing Pipeline (`post-process.ts`)
+### Task 3: Post-Processing Pipeline (`post-process.ts`) ✅
 
 **Files:**
 - Create: `src/lib/post-process.ts`
@@ -569,7 +581,7 @@ git commit -m "feat: add ZWSP and Pangu post-processing pipeline"
 
 ---
 
-### Task 4: Clipboard Utility (`clipboard.ts`)
+### Task 4: Clipboard Utility (`clipboard.ts`) ✅
 
 **Files:**
 - Create: `src/lib/clipboard.ts`
@@ -656,7 +668,7 @@ git commit -m "feat: add clipboard utility with fallback"
 
 ---
 
-### Task 5: FB Renderer — Core (`fb-renderer.ts`)
+### Task 5: FB Renderer — Core (`fb-renderer.ts`) ✅
 
 **Files:**
 - Create: `src/lib/fb-renderer.ts`
@@ -974,7 +986,7 @@ git commit -m "feat: add marked-based FB renderer with custom token mapping"
 
 ---
 
-### Task 6: StyleSelector Component
+### Task 6: StyleSelector Component ✅ (removed — integrated into Editor)
 
 **Files:**
 - Create: `src/components/md-to-fb/StyleSelector.tsx`
@@ -1054,7 +1066,7 @@ git commit -m "feat: add StyleSelector component with style chips and Pangu togg
 
 ---
 
-### Task 7: MarkdownInput Component
+### Task 7: MarkdownInput Component ✅
 
 **Files:**
 - Create: `src/components/md-to-fb/MarkdownInput.tsx`
@@ -1117,7 +1129,7 @@ git commit -m "feat: add MarkdownInput textarea component"
 
 ---
 
-### Task 8: FbPreview Component
+### Task 8: FbPreview Component ✅
 
 **Files:**
 - Create: `src/components/md-to-fb/FbPreview.tsx`
@@ -1197,7 +1209,7 @@ git commit -m "feat: add FbPreview component with copy button"
 
 ---
 
-### Task 9: Editor Component (State Management)
+### Task 9: Editor Component (State Management) ✅
 
 **Files:**
 - Create: `src/components/md-to-fb/Editor.tsx`
@@ -1260,7 +1272,7 @@ git commit -m "feat: add Editor container with state management and conversion p
 
 ---
 
-### Task 10: Page Entry + SEO (`page.tsx`)
+### Task 10: Page Entry + SEO (`page.tsx`) ✅
 
 **Files:**
 - Create: `src/app/text/md-to-fb/page.tsx`
@@ -1363,7 +1375,7 @@ git commit -m "feat: add MD to FB page with SEO metadata and FAQ section"
 
 ---
 
-### Task 11: Integration Test & Manual Verification
+### Task 11: Integration Test & Manual Verification ✅
 
 **Files:**
 - Create: `src/lib/__tests__/integration.test.ts`
@@ -1486,7 +1498,7 @@ git commit -m "test: add full pipeline integration tests"
 
 ---
 
-### Task 12: Build Verification & Final Cleanup
+### Task 12: Build Verification & Final Cleanup ✅
 
 **Files:**
 - Modify: `src/app/text/md-to-fb/page.tsx` (if any build issues)
@@ -1523,20 +1535,31 @@ git push origin main
 
 ## Summary
 
-| Task | Module | Description |
-|------|--------|-------------|
-| 1 | `unicode-fonts.ts` | Unicode offset conversion (shared core) |
-| 2 | `symbol-configs.ts` | Three style configurations |
-| 3 | `post-process.ts` | ZWSP + Pangu pipeline |
-| 4 | `clipboard.ts` | Clipboard API wrapper |
-| 5 | `fb-renderer.ts` | marked custom renderer (main engine) |
-| 6 | `StyleSelector.tsx` | Style chips + Pangu toggle UI |
-| 7 | `MarkdownInput.tsx` | Left textarea panel |
-| 8 | `FbPreview.tsx` | Right preview panel + copy button |
-| 9 | `Editor.tsx` | State management container |
-| 10 | `page.tsx` | Next.js page + SEO |
-| 11 | Integration tests | Full pipeline verification |
-| 12 | Build & cleanup | Production build + push |
+| Task | Module | Description | Status |
+|------|--------|-------------|--------|
+| 1 | `unicode-fonts.ts` | Unicode offset conversion (shared core) | ✅ |
+| 2 | `symbol-configs.ts` | Three style configurations | ✅ |
+| 3 | `post-process.ts` | ZWSP + Pangu pipeline (extended to Unicode Math range) | ✅ |
+| 4 | `clipboard.ts` | Clipboard API wrapper | ✅ |
+| 5 | `fb-renderer.ts` | marked custom renderer + del + br + breaks:true | ✅ |
+| 6 | `StyleSelector.tsx` | ~~Style chips + Pangu toggle UI~~ Removed, integrated into Editor | ✅ |
+| 7 | `MarkdownInput.tsx` | Left textarea panel + backdrop highlighting | ✅ |
+| 8 | `FbPreview.tsx` | Right preview panel + copy button + URL highlighting | ✅ |
+| 9 | `Editor.tsx` | State management + style/pangu controls + audit warnings | ✅ |
+| 10 | `page.tsx` | Next.js page + i18n SEO + FAQ | ✅ |
+| 11 | Integration tests | Full pipeline verification | ✅ |
+| 12 | Build & cleanup | Production build + push | ✅ |
 
-**Total commits:** 12
-**Dependencies added:** `marked`, `vitest`, `@testing-library/react`, `@testing-library/jest-dom`
+### Additional work not in original plan
+
+| Module | Description |
+|--------|-------------|
+| `next-intl` setup | i18n routing, middleware, messages (zh-TW + en) |
+| `[locale]` layout | Locale-based routing with Inter/Newsreader fonts |
+| `Header.tsx` / `Footer.tsx` / `LocaleSwitcher.tsx` | Layout components |
+| `fb-audit.ts` | External link detection module + tests |
+| Backdrop highlighting | CJK-in-markdown-markers visual warning |
+
+**Total commits (actual):** 18 (12 original plan + 6 additional)
+**Dependencies added:** `marked`, `next-intl`, `vitest`, `@testing-library/react`, `@testing-library/jest-dom`
+**Tests:** 142 passing across 7 test files
