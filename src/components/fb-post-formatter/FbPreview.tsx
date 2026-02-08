@@ -93,7 +93,7 @@ export default function FbPreview({ output, highlightLinks }: FbPreviewProps) {
   return (
     <div className="flex flex-1 flex-col rounded-lg border border-border bg-white">
       <div className="flex items-center justify-between border-b border-border px-4 py-2">
-        <span className="text-sm font-medium text-[#1A1A1A]">
+        <span className="text-base font-medium text-[#1A1A1A]">
           {t("fbPreview")}
         </span>
         <button
@@ -114,11 +114,11 @@ export default function FbPreview({ output, highlightLinks }: FbPreviewProps) {
 
       <div className="flex-1 px-4 py-3">
         {isEmpty ? (
-          <p className="text-sm text-[#1A1A1A]/30">
+          <p className="text-base text-[#1A1A1A]/30">
             {t("previewPlaceholder")}
           </p>
         ) : (
-          <pre className="whitespace-pre-wrap break-words font-sans text-sm text-[#1A1A1A]">
+          <pre className="whitespace-pre-wrap break-words font-sans text-base text-[#1A1A1A]">
             {highlightLinks ? highlightUrls(output) : output}
           </pre>
         )}

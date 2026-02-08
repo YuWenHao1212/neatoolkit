@@ -101,7 +101,7 @@ export default function MarkdownInput({
     <div className="flex flex-1 flex-col rounded-lg border border-border bg-white">
       <div className="flex items-center justify-between border-b border-border px-4 py-2">
         <div className="flex flex-col">
-          <span className="text-sm font-medium text-[#1A1A1A]">
+          <span className="text-base font-medium text-[#1A1A1A]">
             {t("markdownInput")}
           </span>
           <span className="text-xs text-[#1A1A1A]/50">
@@ -125,7 +125,7 @@ export default function MarkdownInput({
           <div
             ref={backdropRef}
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 overflow-hidden whitespace-pre-wrap break-words px-4 py-3 font-mono text-sm text-transparent"
+            className="pointer-events-none absolute inset-0 overflow-hidden whitespace-pre-wrap break-words px-4 py-3 font-mono text-base text-transparent"
           >
             {buildHighlight(value)}
           </div>
@@ -138,7 +138,7 @@ export default function MarkdownInput({
           onScroll={syncScroll}
           spellCheck={false}
           placeholder={t("placeholder")}
-          className="w-full min-h-96 resize-none overflow-hidden bg-transparent px-4 py-3 font-mono text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/30 focus:outline-none"
+          className="w-full min-h-96 resize-none overflow-hidden bg-transparent px-4 py-3 font-mono text-base text-[#1A1A1A] placeholder:text-[#1A1A1A]/30 focus:outline-none"
         />
       </div>
 

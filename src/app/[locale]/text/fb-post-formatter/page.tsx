@@ -72,10 +72,10 @@ export default async function MdToFbPage({
         {/* Hero */}
         <section className="pb-6 pt-12 text-center">
           <div className="mx-auto max-w-3xl px-6">
-            <h1 className="font-serif text-[40px] font-bold leading-tight text-ink-900">
+            <h1 className="font-serif text-3xl font-bold leading-tight text-ink-900 md:text-4xl lg:text-5xl">
               {t("title")}
             </h1>
-            <p className="mt-3 text-lg text-ink-600">
+            <p className="mt-3 text-lg text-ink-600 md:text-xl">
               {t("subtitle")}
             </p>
           </div>
@@ -92,7 +92,7 @@ export default async function MdToFbPage({
         <section className="bg-cream-200 py-16">
           <div className="mx-auto max-w-5xl px-6">
             {/* How to Use */}
-            <h2 className="text-center font-serif text-2xl font-bold text-ink-900">
+            <h2 className="text-center font-serif text-2xl font-bold text-ink-900 md:text-3xl">
               {t("howToUseTitle")}
             </h2>
 
@@ -105,10 +105,10 @@ export default async function MdToFbPage({
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
                     {number}
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-ink-900">
+                  <h3 className="mt-4 text-lg font-semibold text-ink-900 md:text-xl">
                     {title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  <p className="mt-2 text-base leading-relaxed text-ink-600">
                     {description}
                   </p>
                 </div>
@@ -116,7 +116,7 @@ export default async function MdToFbPage({
             </div>
 
             {/* FAQ */}
-            <h2 className="mt-16 text-center font-serif text-2xl font-bold text-ink-900">
+            <h2 className="mt-16 text-center font-serif text-2xl font-bold text-ink-900 md:text-3xl">
               {t("faqTitle")}
             </h2>
 
@@ -126,8 +126,8 @@ export default async function MdToFbPage({
                   key={question}
                   className="rounded-xl bg-white p-6 shadow-sm"
                 >
-                  <h3 className="font-semibold text-ink-900">{question}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  <h3 className="text-lg font-semibold text-ink-900">{question}</h3>
+                  <p className="mt-2 text-base leading-relaxed text-ink-600">
                     {answer}
                   </p>
                 </div>
@@ -139,7 +139,7 @@ export default async function MdToFbPage({
         {/* Related Tools */}
         <section className="py-16">
           <div className="mx-auto max-w-5xl px-6">
-            <h2 className="text-center font-serif text-2xl font-bold text-ink-900">
+            <h2 className="text-center font-serif text-2xl font-bold text-ink-900 md:text-3xl">
               {t("relatedToolsTitle")}
             </h2>
 
@@ -150,10 +150,10 @@ export default async function MdToFbPage({
                   href={href}
                   className="group rounded-xl border border-border bg-white p-6 transition-shadow hover:shadow-md"
                 >
-                  <h3 className="font-semibold text-ink-900 group-hover:text-accent">
+                  <h3 className="text-lg font-semibold text-ink-900 group-hover:text-accent">
                     {title}
                   </h3>
-                  <p className="mt-2 text-sm text-ink-600">{description}</p>
+                  <p className="mt-2 text-base text-ink-600">{description}</p>
                 </Link>
               ))}
             </div>
