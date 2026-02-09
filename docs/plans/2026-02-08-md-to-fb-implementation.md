@@ -13,7 +13,7 @@
 | Decision | Rationale |
 |----------|-----------|
 | Renamed `md-to-fb` → `fb-post-formatter` | SEO: "facebook post formatter" matches user search intent. Cockpit SEO research (DataForSEO 2026-02-08) informed keyword choice. Phase 0 split into two pages per intent. |
-| Added i18n with next-intl | zh-TW primary market per Cockpit freetools strategy. English for long-tail SEO. |
+| Added i18n with next-intl | zh-TW primary market per Cockpit neatoolkit strategy. English for long-tail SEO. |
 | Removed StyleSelector component | Integrated into Editor.tsx — simpler architecture, less prop drilling. |
 | Extended Pangu regex | `\w` doesn't match Unicode Mathematical Alphanumerics (U+1D5D4–U+1D7FF). Extended for correct spacing around converted bold/italic text. |
 | Added `breaks: true` to marked | Preserves single `\n` line breaks — critical for Facebook post formatting where users expect WYSIWYG line breaks. |
@@ -27,7 +27,7 @@
 Before starting, install `marked`:
 
 ```bash
-cd /Users/yuwenhao/GitHub/freetools
+cd /Users/yuwenhao/GitHub/neatoolkit
 npm install marked
 npm install -D @types/marked
 ```
@@ -1289,7 +1289,7 @@ import { Editor } from "@/components/md-to-fb/Editor";
 
 export const metadata: Metadata = {
   title:
-    "Markdown to FB Post Formatting \u2014 Convert Markdown to Facebook Text | FreeTools",
+    "Markdown to FB Post Formatting \u2014 Convert Markdown to Facebook Text | Neatoolkit",
   description:
     "Free online Markdown to Facebook formatting tool. Supports bold, headings, lists, dividers. Paste Markdown, preview Facebook format, one-click copy.",
 };

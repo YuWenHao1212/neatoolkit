@@ -38,7 +38,7 @@ export default async function Header() {
             F
           </span>
           <span className="text-lg font-semibold text-ink-900">
-            FreeTools
+            Neatoolkit
           </span>
         </Link>
 

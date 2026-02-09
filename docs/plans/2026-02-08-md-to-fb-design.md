@@ -340,14 +340,14 @@ UI includes:
 
 **zh-TW Meta Tags**:
 ```
-Title: Facebook 貼文排版工具 — Markdown 轉 FB 格式化文字 | FreeTools
+Title: Facebook 貼文排版工具 — Markdown 轉 FB 格式化文字 | Neatoolkit
 Description: 免費線上 Facebook 貼文排版工具。支援粗體、標題、列表、分隔線。貼上 Markdown，預覽 Facebook 格式，一鍵複製。
 H1: Facebook 貼文排版工具
 ```
 
 **en Meta Tags**:
 ```
-Title: Facebook Post Formatter — Convert Markdown to FB Formatted Text | FreeTools
+Title: Facebook Post Formatter — Convert Markdown to FB Formatted Text | Neatoolkit
 Description: Free online Facebook post formatting tool. Supports bold, headings, lists, dividers. Paste Markdown, preview Facebook format, one-click copy.
 H1: Facebook Post Formatter
 ```
