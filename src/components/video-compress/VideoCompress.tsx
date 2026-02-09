@@ -139,9 +139,12 @@ export default function VideoCompress() {
     formData.append("quality", quality);
     if (resolution) formData.append("max_resolution", resolution);
 
+    const estimatedSeconds = estimateCompressTime(file.size / (1024 * 1024), quality, resolution);
+    const timeoutMs = Math.max(120000, estimatedSeconds * 1.5 * 1000);
+
     try {
       const response = await fetchApi("/api/video/compress", formData, {
-        timeout: 300000,
+        timeout: timeoutMs,
       });
 
       const blob = await response.blob();
