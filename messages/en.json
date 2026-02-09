@@ -248,6 +248,53 @@
       "fbPostFormatterDesc": "Bold, italic, and special fonts for Facebook posts."
     }
   },
+  "RemoveBackground": {
+    "title": "AI Background Remover",
+    "subtitle": "Free online background removal \u2014 AI automatically detects subjects and removes backgrounds",
+    "uploadLabel": "Click or drag & drop to upload",
+    "uploadHint": "Supports JPG, PNG, WebP up to 10MB",
+    "processBtn": "Remove Background",
+    "processing": "Processing...",
+    "aiProcessing": "AI is processing your image...",
+    "processingHint": "First use may take longer to load the AI model",
+    "download": "Download PNG",
+    "reset": "Upload New",
+    "retry": "Retry",
+    "warmingUp": "Loading AI model, please wait...",
+    "unknownError": "An unexpected error occurred. Please try again.",
+    "resultPlaceholder": "Result will appear here",
+    "howToUseTitle": "How to Use AI Background Remover?",
+    "steps": {
+      "step1Title": "Upload Image",
+      "step1Desc": "Click the upload area or drag & drop your image. Supports JPG, PNG, and WebP.",
+      "step2Title": "AI Removes Background",
+      "step2Desc": "AI automatically detects people and objects, precisely removing the background.",
+      "step3Title": "Download Result",
+      "step3Desc": "Preview the result and download your transparent PNG with one click."
+    },
+    "faqTitle": "FAQ",
+    "faqs": {
+      "q1": "How good is the AI background removal?",
+      "a1": "We use the advanced U2-Net AI model that can precisely detect people, animals, and objects. It works best with images that have clear edges and good contrast.",
+      "q2": "What format is the output?",
+      "a2": "The output is always a PNG with a transparent background. You can use it directly in designs, presentations, or social media posts.",
+      "q3": "What can I use it for?",
+      "a3": "Perfect for e-commerce product photos, ID photos, social media content, presentation graphics, and more. Remove the background and easily composite onto any color or scene.",
+      "q4": "How long does processing take?",
+      "a4": "Most images are processed in 3-10 seconds. The first request may take up to 30 seconds while the AI model loads.",
+      "q5": "Are uploaded images stored?",
+      "a5": "No. All images are deleted from the server immediately after processing. We do not store any uploaded images."
+    },
+    "relatedToolsTitle": "Related Tools",
+    "relatedTools": {
+      "imageCompress": "Image Compressor",
+      "imageCompressDesc": "Compress JPG, PNG, WebP images to reduce file size.",
+      "fontGenerator": "Font Generator",
+      "fontGeneratorDesc": "15 special font styles with instant preview and one-click copy.",
+      "fbPostFormatter": "FB Post Formatter",
+      "fbPostFormatterDesc": "Bold, italic, and special fonts for Facebook posts."
+    }
+  },
   "VideoToolsNav": {
     "videoCompress": "Video Compressor",
     "videoToGif": "Video to GIF"

@@ -248,6 +248,53 @@
       "fbPostFormatterDesc": "粗體、斜體等特殊字體，Markdown 語法一鍵轉換。"
     }
   },
+  "RemoveBackground": {
+    "title": "AI 去背工具",
+    "subtitle": "免費線上去背，AI 自動偵測人物與物品，一鍵移除圖片背景",
+    "uploadLabel": "點擊或拖放圖片上傳",
+    "uploadHint": "支援 JPG、PNG、WebP，最大 10MB",
+    "processBtn": "開始去背",
+    "processing": "AI 處理中...",
+    "aiProcessing": "AI 正在處理你的圖片...",
+    "processingHint": "首次使用可能需要較長時間載入 AI 模型",
+    "download": "下載去背圖片",
+    "reset": "重新上傳",
+    "retry": "重試",
+    "warmingUp": "正在載入 AI 模型，請稍候再試...",
+    "unknownError": "發生未知錯誤，請稍後再試。",
+    "resultPlaceholder": "去背結果將顯示在這裡",
+    "howToUseTitle": "如何使用 AI 去背工具？",
+    "steps": {
+      "step1Title": "上傳圖片",
+      "step1Desc": "點擊上傳區域或拖放圖片，支援 JPG、PNG、WebP 格式。",
+      "step2Title": "AI 自動去背",
+      "step2Desc": "AI 自動偵測圖片中的人物或物品，精準移除背景。",
+      "step3Title": "下載結果",
+      "step3Desc": "預覽去背效果並一鍵下載透明背景的 PNG 圖片。"
+    },
+    "faqTitle": "常見問題",
+    "faqs": {
+      "q1": "AI 去背的效果如何？",
+      "a1": "我們使用先進的 AI 模型（U2-Net），能精準偵測人物、動物、物品等主體，自動移除背景。對於邊緣清晰的圖片效果最佳。",
+      "q2": "去背後的圖片是什麼格式？",
+      "a2": "去背後的圖片會以 PNG 格式輸出，保留透明背景。你可以直接用於設計、簡報或社群貼文。",
+      "q3": "可以用來做什麼？",
+      "a3": "適合電商產品照、證件照、社群貼文素材、簡報圖片等。移除背景後可輕鬆合成到任何底色或場景。",
+      "q4": "處理需要多久？",
+      "a4": "一般圖片約 3-10 秒即可完成。首次使用時 AI 模型需要載入，可能需要稍等約 30 秒。",
+      "q5": "上傳的圖片會被保存嗎？",
+      "a5": "不會。所有圖片在處理完成後立即從伺服器刪除，我們不會保存任何上傳的圖片。"
+    },
+    "relatedToolsTitle": "相關工具",
+    "relatedTools": {
+      "imageCompress": "圖片壓縮工具",
+      "imageCompressDesc": "壓縮 JPG、PNG、WebP 圖片，減小檔案大小。",
+      "fontGenerator": "特殊字體產生器",
+      "fontGeneratorDesc": "15 種特殊字體風格即時轉換，一鍵複製。",
+      "fbPostFormatter": "FB 貼文排版",
+      "fbPostFormatterDesc": "粗體、斜體等特殊字體，Markdown 語法一鍵轉換。"
+    }
+  },
   "VideoToolsNav": {
     "videoCompress": "影片壓縮",
     "videoToGif": "影片轉 GIF"
