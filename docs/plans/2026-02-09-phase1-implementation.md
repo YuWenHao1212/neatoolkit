@@ -44,12 +44,12 @@ Azure Subscription (shared free credits, expires 2026/6/1)
             ├── Image: neatoolkitacr.azurecr.io/neatoolkit-api:latest
             ├── CPU: 2 vCPU
             ├── Memory: 4 GB
-            ├── Min replicas: 0 (scale to zero when idle)
+            ├── Min replicas: 1 (avoid cold start for better UX)
             └── Max replicas: 1 (single instance for free tier)
 
 Vercel (existing, $0)
 └── neatoolkit.com → Next.js frontend
-    └── Calls: https://neatoolkit-api.<env>.azurecontainerapps.io
+    └── Calls: https://neatoolkit-api.livelystone-ee11a8ed.japaneast.azurecontainerapps.io
 ```
 
 ### Cost Strategy
@@ -95,7 +95,7 @@ neatoolkit-rg/
 |---------|-------|--------|
 | CPU | 2 vCPU | ffmpeg encoding + u2net need parallel CPU |
 | Memory | 4 GB | u2net model ~1.2GB peak + ffmpeg ~500MB + overhead |
-| Min replicas | 0 | Scale to zero = $0 when idle |
+| Min replicas | 1 | Avoid cold start for better UX |
 | Max replicas | 1 | Free credit budget, single instance enough for early traffic |
 | Ingress | External, port 8000 | Public HTTPS endpoint |
 | Health probe | /health (HTTP GET) | Liveness check |
@@ -106,7 +106,7 @@ neatoolkit-rg/
 
 ### Base URL
 
-- Production: `https://neatoolkit-api.<env>.azurecontainerapps.io`
+- Production: `https://neatoolkit-api.livelystone-ee11a8ed.japaneast.azurecontainerapps.io`
 - Local dev: `http://localhost:8000`
 
 ### Endpoints
@@ -1514,7 +1514,7 @@ git commit -m "feat: add video to GIF tool page"
 # 1. Create resource group
 az group create \
   --name neatoolkit-rg \
-  --location eastasia
+  --location japaneast
 
 # 2. Create container registry
 az acr create \
@@ -1531,7 +1531,7 @@ docker push neatoolkitacr.azurecr.io/neatoolkit-api:latest
 az containerapp env create \
   --name neatoolkit-env \
   --resource-group neatoolkit-rg \
-  --location eastasia
+  --location japaneast
 
 # 5. Create Container App
 az containerapp create \
@@ -1689,36 +1689,74 @@ Week 2:
 
 ### Recommended Sequential Order (single developer)
 
-| Order | Task | Dependencies |
-|-------|------|-------------|
-| 1 | **Task 1**: Backend scaffold | None |
-| 2 | **Task 2**: Image compress endpoint | Task 1 |
-| 3 | **Task 3**: Image compress frontend | Task 2 |
-| 4 | **Task 4**: Remove-bg endpoint | Task 1 |
-| 5 | **Task 5**: Remove-bg frontend | Task 4 |
-| 6 | **Task 6**: Video compress endpoint | Task 1 |
-| 7 | **Task 7**: Video compress frontend | Task 6 |
-| 8 | **Task 8**: Video-to-gif endpoint | Task 6 (shares ffmpeg_service) |
-| 9 | **Task 9**: Video-to-gif frontend | Task 8 |
-| 10 | **Task 10**: Azure deployment | Task 1-8 done |
-| 11 | **Task 11**: Navigation & homepage | Task 3,5,7,9 done |
-| 12 | **Task 12**: SEO & i18n completion | Task 11 done |
+| Order | Task | Dependencies | Status |
+|-------|------|-------------|--------|
+| 1 | **Task 1**: Backend scaffold | None | ✅ |
+| 2 | **Task 2**: Image compress endpoint | Task 1 | ✅ |
+| 3 | **Task 3**: Image compress frontend | Task 2 | ✅ |
+| 4 | **Task 4**: Remove-bg endpoint | Task 1 | ✅ |
+| 5 | **Task 5**: Remove-bg frontend | Task 4 | ✅ |
+| 6 | **Task 6**: Video compress endpoint | Task 1 | ✅ |
+| 7 | **Task 7**: Video compress frontend | Task 6 | ✅ |
+| 8 | **Task 8**: Video-to-gif endpoint | Task 6 (shares ffmpeg_service) | ✅ |
+| 9 | **Task 9**: Video-to-gif frontend | Task 8 | ✅ |
+| 10 | **Task 10**: Azure deployment | Task 1-8 done | ✅ |
+| 11 | **Task 11**: Navigation & homepage | Task 3,5,7,9 done | ✅ |
+| 12 | **Task 12**: SEO & i18n completion | Task 11 done | ✅ |
 
 ### Definition of Done
 
-- [ ] All 4 backend endpoints passing tests
-- [ ] All 4 frontend pages functional
-- [ ] Docker image builds clean
-- [ ] Azure Container App deployed and healthy
-- [ ] Vercel production pointing to Azure API
-- [ ] All pages have complete SEO (meta, schema, FAQ)
-- [ ] zh-TW and en translations complete
-- [ ] Navigation updated (header, mobile, homepage)
-- [ ] Google Search Console: submit new pages
-- [ ] Manual test on mobile (iOS Safari)
+- [x] All 4 backend endpoints passing tests (11 tests passing)
+- [x] All 4 frontend pages functional (verified E2E: image compress 2.8KB→1.8KB)
+- [x] Docker image builds clean (GitHub Actions CI/CD)
+- [x] Azure Container App deployed and healthy (Japan East, ~130ms response)
+- [x] Vercel production pointing to Azure API (next.config.ts env default)
+- [x] All pages have complete SEO (meta, FAQPage + WebApplication + HowTo JSON-LD)
+- [x] zh-TW and en translations complete (real Traditional Chinese)
+- [x] Navigation updated (header dropdowns, mobile nav, homepage)
+- [ ] Google Search Console: submit new pages (pending manual action)
+- [ ] Manual test on mobile (iOS Safari) (pending manual action)
+
+### Task Progress
+
+| # | Task | Status |
+|---|------|--------|
+| 1 | Backend scaffold | ✅ Complete |
+| 2 | Image compress endpoint | ✅ Complete |
+| 3 | Image compress frontend + shared components | ✅ Complete |
+| 4 | Background removal endpoint | ✅ Complete |
+| 5 | Background removal frontend | ✅ Complete |
+| 6 | Video compress endpoint | ✅ Complete |
+| 7 | Video compress frontend | ✅ Complete |
+| 8 | Video to GIF endpoint | ✅ Complete |
+| 9 | Video to GIF frontend | ✅ Complete |
+| 10 | Azure deployment | ✅ Complete |
+| 11 | Navigation & homepage | ✅ Complete |
+| 12 | SEO & i18n completion | ✅ Complete |
+
+### Post-Deployment Fixes
+
+Issues discovered and fixed after initial deployment:
+
+1. **CORS `expose_headers` missing** — Browser CORS policy blocked frontend from reading custom response headers (`x-original-size`, `x-compressed-size`, etc.). Fixed by adding `expose_headers` list to `CORSMiddleware` in `src/main.py`.
+
+2. **Turbopack `NEXT_PUBLIC_*` not inlined** — Unlike Webpack, Turbopack does NOT auto-inline `process.env.NEXT_PUBLIC_*` in client-side JS at build time. Frontend was calling `http://localhost:8000` in production. Fixed by adding `env` config in `next.config.ts` with production API URL as default fallback.
+
+3. **Vercel build cache stale chunks** — After fixing the env var issue, Vercel served cached JS chunks with the old `localhost:8000` URL. Required changing enough code to force new chunk hashes.
+
+### Deployment Details
+
+| Resource | URL |
+|----------|-----|
+| Frontend (production) | `https://www.neatoolkit.com` |
+| Backend API | `https://neatoolkit-api.livelystone-ee11a8ed.japaneast.azurecontainerapps.io` |
+| Backend GitHub | `https://github.com/YuWenHao1212/neatoolkit-api` (private) |
+| Azure region | Japan East |
+| Container config | 2 vCPU, 4 GB RAM, min-replicas=1, max-replicas=1 |
+| CI/CD | GitHub Actions → ACR → Container Apps (auto-deploy on push to main) |
 
 ---
 
 **Created:** 2026-02-09
 **Author:** Claude Code (writing-plans skill)
-**Status:** Draft — pending approval
+**Status:** ✅ Complete — All 12 tasks implemented and deployed to production (2026-02-09)
