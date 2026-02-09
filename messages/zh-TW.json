@@ -5,7 +5,15 @@
     "mdToFbTitle": "Facebook 貼文排版工具 — 粗體、特殊字體、空行保留 | Neatoolkit",
     "mdToFbDescription": "免費 FB 貼文排版工具，支援粗體、斜體等特殊字體，自動保留換行與空行。ChatGPT、AI 文字一鍵轉換，複製貼到 FB、IG。也支援 Markdown 語法。",
     "fontGeneratorTitle": "特殊字體產生器 — IG 字體轉換、可愛字體、質感英文字體一鍵複製 | Neatoolkit",
-    "fontGeneratorDescription": "免費線上特殊字體產生器，粗體、花體、哥德體、可愛字體等 15 種風格即時轉換。支援 IG 字體、FB 貼文、LINE 訊息，質感英文字體一鍵複製貼上，無需安裝 App。"
+    "fontGeneratorDescription": "免費線上特殊字體產生器，粗體、花體、哥德體、可愛字體等 15 種風格即時轉換。支援 IG 字體、FB 貼文、LINE 訊息，質感英文字體一鍵複製貼上，無需安裝 App。",
+    "imageCompressTitle": "線上圖片壓縮工具 — 免費壓縮 JPG、PNG、WebP 圖片 | Neatoolkit",
+    "imageCompressDescription": "免費線上圖片壓縮工具，支援 JPG、PNG、WebP 格式。快速壓縮圖片檔案大小，保持畫質，適合網頁、社群媒體和電子郵件使用。",
+    "removeBackgroundTitle": "AI 去背工具 — 免費線上一鍵去背 | Neatoolkit",
+    "removeBackgroundDescription": "免費線上去背工具，AI 自動偵測人物與物品，一鍵移除圖片背景。支援 JPG、PNG，適合電商、社群貼文、證件照使用。",
+    "videoCompressTitle": "影片壓縮工具 — 免費線上壓縮 MP4 影片 | Neatoolkit",
+    "videoCompressDescription": "免費線上影片壓縮工具，快速壓縮 MP4 影片大小，保持畫質。支援調整解析度與品質，適合 LINE、IG 限動、Email 分享。",
+    "videoToGifTitle": "影片轉 GIF — 免費線上 MP4 轉 GIF 動圖 | Neatoolkit",
+    "videoToGifDescription": "免費線上影片轉 GIF 工具，將 MP4 影片快速轉換為 GIF 動圖。支援自訂尺寸和幀率，適合製作社群貼文、聊天表情和教學動圖。"
   },
   "Header": {
     "imageTools": "圖片工具",
@@ -13,7 +21,11 @@
     "textTools": "文字工具",
     "careerTools": "職涯工具",
     "fontGenerator": "特殊字體產生器",
-    "fbPostFormatter": "FB 貼文排版"
+    "fbPostFormatter": "FB 貼文排版",
+    "imageCompress": "圖片壓縮",
+    "removeBackground": "AI 去背",
+    "videoCompress": "影片壓縮",
+    "videoToGif": "影片轉 GIF"
   },
   "Footer": {
     "about": "關於我們",
@@ -177,6 +189,68 @@
       "bgRemover": "去背工具",
       "bgRemoverDesc": "AI 驅動的一鍵去背，支援人物和物品。"
     }
+  },
+  "ImageToolsNav": {
+    "imageCompress": "圖片壓縮",
+    "removeBackground": "AI 去背"
+  },
+  "ImageCompress": {
+    "title": "線上圖片壓縮工具",
+    "subtitle": "免費壓縮 JPG、PNG、WebP 圖片，快速縮小檔案大小，保持最佳畫質",
+    "uploadLabel": "點擊或拖放圖片上傳",
+    "uploadHint": "支援 JPG、PNG、WebP，最大 10MB",
+    "qualityLabel": "壓縮品質",
+    "quality": {
+      "low": "小檔案",
+      "medium": "平衡",
+      "high": "高畫質"
+    },
+    "compressBtn": "開始壓縮",
+    "compressing": "壓縮中...",
+    "originalSize": "原始大小",
+    "compressedSize": "壓縮後",
+    "savings": "節省",
+    "download": "下載壓縮圖片",
+    "reset": "重新上傳",
+    "retry": "重試",
+    "warmingUp": "伺服器正在啟動中，請稍候再試...",
+    "unknownError": "發生未知錯誤，請稍後再試。",
+    "resultPlaceholder": "壓縮結果將顯示在這裡",
+    "howToUseTitle": "如何壓縮圖片？",
+    "steps": {
+      "step1Title": "上傳圖片",
+      "step1Desc": "點擊上傳區域或直接拖放圖片。支援 JPG、PNG、WebP 格式，最大 10MB。",
+      "step2Title": "選擇壓縮品質",
+      "step2Desc": "選擇「小檔案」、「平衡」或「高畫質」模式，根據你的需求調整壓縮程度。",
+      "step3Title": "下載壓縮圖片",
+      "step3Desc": "壓縮完成後，查看檔案大小變化並一鍵下載壓縮後的圖片。"
+    },
+    "faqTitle": "常見問題",
+    "faqs": {
+      "q1": "圖片壓縮會損失畫質嗎？",
+      "a1": "「高畫質」模式下，壓縮造成的畫質損失幾乎不可見。「平衡」模式在檔案大小和畫質之間取得最佳平衡，適合大多數用途。",
+      "q2": "支援哪些圖片格式？",
+      "a2": "目前支援 JPEG（JPG）、PNG 和 WebP 三種常見格式。壓縮後的圖片會保持原始格式輸出。",
+      "q3": "圖片壓縮後可以用在哪裡？",
+      "a3": "壓縮後的圖片適合用於網站上傳、社群媒體貼文、Email 附件、部落格文章等。較小的檔案大小可以加快網頁載入速度。",
+      "q4": "最大可以上傳多大的圖片？",
+      "a4": "單張圖片最大支援 10MB。如果你的圖片超過此限制，建議先降低解析度再上傳。",
+      "q5": "壓縮後的圖片會被保存嗎？",
+      "a5": "不會。所有圖片在伺服器端處理後會立即刪除，我們不會保存你上傳的任何圖片。"
+    },
+    "relatedToolsTitle": "相關工具",
+    "relatedTools": {
+      "removeBackground": "AI 去背工具",
+      "removeBackgroundDesc": "AI 自動偵測並移除圖片背景，一鍵去背。",
+      "fontGenerator": "特殊字體產生器",
+      "fontGeneratorDesc": "15 種特殊字體風格即時轉換，一鍵複製。",
+      "fbPostFormatter": "FB 貼文排版",
+      "fbPostFormatterDesc": "粗體、斜體等特殊字體，Markdown 語法一鍵轉換。"
+    }
+  },
+  "VideoToolsNav": {
+    "videoCompress": "影片壓縮",
+    "videoToGif": "影片轉 GIF"
   },
   "LocaleSwitcher": {
     "label": "語言",

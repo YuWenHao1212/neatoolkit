@@ -5,7 +5,15 @@
     "mdToFbTitle": "Facebook Bold Text Generator \u2014 Free Post Formatter & Text Formatting | Neatoolkit",
     "mdToFbDescription": "Free Facebook bold text generator with italic, strikethrough & special fonts. Format posts with one-click copy \u2014 preserves line breaks, converts Markdown and ChatGPT text. Works for Instagram too.",
     "fontGeneratorTitle": "Aesthetic Font Generator \u2014 IG Fonts, Cute & Fancy Text Free Converter | Neatoolkit",
-    "fontGeneratorDescription": "Free online special font generator with 15 styles: bold, script, fraktur, cute fonts and more. One-click copy to Instagram, Facebook, LINE \u2014 no app install needed."
+    "fontGeneratorDescription": "Free online special font generator with 15 styles: bold, script, fraktur, cute fonts and more. One-click copy to Instagram, Facebook, LINE \u2014 no app install needed.",
+    "imageCompressTitle": "Online Image Compressor \u2014 Free JPG, PNG, WebP Compression | Neatoolkit",
+    "imageCompressDescription": "Free online image compression tool. Compress JPG, PNG, and WebP images quickly while maintaining quality. Perfect for websites, social media, and email attachments.",
+    "removeBackgroundTitle": "AI Background Remover \u2014 Free Online Background Removal | Neatoolkit",
+    "removeBackgroundDescription": "Free online AI background remover. Automatically detect and remove image backgrounds with one click. Supports JPG and PNG for e-commerce, social media, and ID photos.",
+    "videoCompressTitle": "Video Compressor \u2014 Free Online MP4 Video Compression | Neatoolkit",
+    "videoCompressDescription": "Free online video compression tool. Quickly compress MP4 videos while maintaining quality. Adjust resolution and quality for LINE, Instagram Stories, and email sharing.",
+    "videoToGifTitle": "Video to GIF \u2014 Free Online MP4 to GIF Converter | Neatoolkit",
+    "videoToGifDescription": "Free online video to GIF converter. Convert MP4 videos to animated GIFs quickly. Customize size and frame rate for social media posts, chat stickers, and tutorials."
   },
   "Header": {
     "imageTools": "Image Tools",
@@ -13,7 +21,11 @@
     "textTools": "Text Tools",
     "careerTools": "Career Tools",
     "fontGenerator": "Font Generator",
-    "fbPostFormatter": "FB Post Formatter"
+    "fbPostFormatter": "FB Post Formatter",
+    "imageCompress": "Image Compressor",
+    "removeBackground": "Background Remover",
+    "videoCompress": "Video Compressor",
+    "videoToGif": "Video to GIF"
   },
   "Footer": {
     "about": "About",
@@ -177,6 +189,68 @@
       "bgRemover": "Background Remover",
       "bgRemoverDesc": "AI-powered one-click background removal for people and objects."
     }
+  },
+  "ImageToolsNav": {
+    "imageCompress": "Image Compressor",
+    "removeBackground": "Background Remover"
+  },
+  "ImageCompress": {
+    "title": "Online Image Compressor",
+    "subtitle": "Free JPG, PNG, WebP compression \u2014 reduce file size while keeping quality",
+    "uploadLabel": "Click or drag & drop to upload",
+    "uploadHint": "Supports JPG, PNG, WebP up to 10MB",
+    "qualityLabel": "Compression Quality",
+    "quality": {
+      "low": "Small File",
+      "medium": "Balanced",
+      "high": "High Quality"
+    },
+    "compressBtn": "Compress",
+    "compressing": "Compressing...",
+    "originalSize": "Original",
+    "compressedSize": "Compressed",
+    "savings": "Savings",
+    "download": "Download Compressed Image",
+    "reset": "Upload New",
+    "retry": "Retry",
+    "warmingUp": "Server is warming up, please wait...",
+    "unknownError": "An unexpected error occurred. Please try again.",
+    "resultPlaceholder": "Compression result will appear here",
+    "howToUseTitle": "How to Compress Images?",
+    "steps": {
+      "step1Title": "Upload Image",
+      "step1Desc": "Click the upload area or drag & drop your image. Supports JPG, PNG, and WebP up to 10MB.",
+      "step2Title": "Choose Quality",
+      "step2Desc": "Select Small File, Balanced, or High Quality mode based on your needs.",
+      "step3Title": "Download",
+      "step3Desc": "Review the file size reduction and download your compressed image with one click."
+    },
+    "faqTitle": "FAQ",
+    "faqs": {
+      "q1": "Will image compression reduce quality?",
+      "a1": "In High Quality mode, the quality loss is virtually invisible. Balanced mode offers the best trade-off between file size and quality for most use cases.",
+      "q2": "What image formats are supported?",
+      "a2": "We currently support JPEG (JPG), PNG, and WebP. The compressed image maintains the same format as the original.",
+      "q3": "Where can I use compressed images?",
+      "a3": "Compressed images are perfect for website uploads, social media posts, email attachments, and blog articles. Smaller files mean faster page loading.",
+      "q4": "What is the maximum upload size?",
+      "a4": "Each image can be up to 10MB. If your image exceeds this limit, consider reducing the resolution first.",
+      "q5": "Are uploaded images stored on your server?",
+      "a5": "No. All images are deleted immediately after processing. We do not store any of your uploaded images."
+    },
+    "relatedToolsTitle": "Related Tools",
+    "relatedTools": {
+      "removeBackground": "AI Background Remover",
+      "removeBackgroundDesc": "AI-powered automatic background removal with one click.",
+      "fontGenerator": "Font Generator",
+      "fontGeneratorDesc": "15 special font styles with instant preview and one-click copy.",
+      "fbPostFormatter": "FB Post Formatter",
+      "fbPostFormatterDesc": "Bold, italic, and special fonts for Facebook posts."
+    }
+  },
+  "VideoToolsNav": {
+    "videoCompress": "Video Compressor",
+    "videoToGif": "Video to GIF"
   },
   "LocaleSwitcher": {
     "label": "Language",
