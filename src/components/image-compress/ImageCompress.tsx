@@ -15,6 +15,7 @@ interface CompressResult {
   compressedSize: number;
   width: number;
   height: number;
+  outputFormat: string;
 }
 
 export default function ImageCompress() {
@@ -66,6 +67,8 @@ export default function ImageCompress() {
 
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
+      const contentType = response.headers.get("content-type") || "image/jpeg";
+      const outputFormat = contentType.split("/")[1]?.toUpperCase() ?? "JPEG";
 
       setResult({
         url,
@@ -73,6 +76,7 @@ export default function ImageCompress() {
         compressedSize: Number(response.headers.get("x-compressed-size") || 0),
         width: Number(response.headers.get("x-width") || 0),
         height: Number(response.headers.get("x-height") || 0),
+        outputFormat,
       });
       setStatus("done");
     } catch (error) {
@@ -109,7 +113,10 @@ export default function ImageCompress() {
       : 0;
 
   const fileFormat = file?.type.split("/")[1]?.toUpperCase() ?? "";
-  const compressedFileName = file ? `compressed-${file.name}` : "";
+  const outputExt = result?.outputFormat?.toLowerCase() ?? "";
+  const compressedFileName = file
+    ? `compressed-${file.name.replace(/\.\w+$/, "")}.${outputExt || file.name.split(".").pop()}`
+    : "";
 
   return (
     <div className="rounded-2xl border border-border bg-white">
@@ -200,7 +207,7 @@ export default function ImageCompress() {
               <div className="mt-3">
                 <p className="truncate text-sm font-medium text-ink-900">{compressedFileName}</p>
                 <p className="mt-0.5 text-xs text-ink-500">
-                  {formatFileSize(result.compressedSize)} &middot; {fileFormat} &middot; {result.width} x {result.height} px
+                  {formatFileSize(result.compressedSize)} &middot; {result.outputFormat} &middot; {result.width} x {result.height} px
                 </p>
               </div>
             </div>
