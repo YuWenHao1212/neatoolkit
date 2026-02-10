@@ -18,6 +18,7 @@ const AB_TEST_MODELS = [
   { id: "openai/gpt-4o-mini", label: "GPT-4o Mini" },
   { id: "google/gemini-2.5-flash-lite", label: "Gemini 2.5 Flash Lite" },
   { id: "qwen/qwen3-30b-a3b", label: "Qwen3 30B" },
+  { id: "openai/gpt-4.1-nano", label: "GPT-4.1 Nano" },
 ] as const;
 
 interface TranslateResult {
