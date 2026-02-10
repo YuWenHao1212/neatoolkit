@@ -169,6 +169,7 @@ export default function YouTubeTranslate() {
           value={videoUrl}
           onChange={(e) => handleUrlChange(e.target.value)}
           onPaste={(e) => {
+            e.preventDefault();
             const pasted = e.clipboardData.getData("text");
             if (pasted) {
               handleUrlChange(pasted);
