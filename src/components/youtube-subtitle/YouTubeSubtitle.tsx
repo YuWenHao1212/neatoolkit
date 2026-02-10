@@ -330,7 +330,7 @@ export default function YouTubeSubtitle() {
             {/* Header row */}
             <div className="mb-4 flex items-center justify-between">
               <p className="text-sm font-medium text-ink-700">
-                {t("preview", { count: result.total_lines })}
+                {t("preview")}
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-ink-500">{t("timestamp")}</span>

@@ -48,7 +48,7 @@ export default function FullContentModal({
         if (e.target === overlayRef.current) onClose();
       }}
     >
-      <div className="flex max-h-[85vh] w-full flex-col rounded-t-2xl bg-white md:max-w-2xl md:rounded-2xl">
+      <div className="flex max-h-[85vh] w-full flex-col rounded-t-2xl bg-white md:max-w-3xl md:rounded-2xl">
         <div className="flex items-center justify-between border-b border-border px-6 py-4">
           <h2 className="text-lg font-semibold text-ink-900">{title}</h2>
           <button
@@ -73,7 +73,7 @@ export default function FullContentModal({
         </div>
 
         <div className="flex-1 overflow-y-auto px-6 py-4">
-          <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-ink-700">
+          <pre className="whitespace-pre-wrap break-words font-sans text-base leading-relaxed text-ink-700">
             {content}
           </pre>
         </div>

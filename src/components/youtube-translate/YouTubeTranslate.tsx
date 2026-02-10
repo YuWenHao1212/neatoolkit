@@ -254,7 +254,7 @@ export default function YouTubeTranslate() {
           <div className="rounded-xl bg-white p-5">
             <div className="mb-4 flex items-center justify-between">
               <p className="text-sm font-medium text-ink-700">
-                {t("preview", { count: result.total_lines })}
+                {t("preview")}
               </p>
             </div>
             <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-ink-700">
