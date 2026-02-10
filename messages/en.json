@@ -465,7 +465,7 @@
   "YouTubeSubtitle": {
     "title": "YouTube Subtitle Downloader",
     "subtitle": "Paste a YouTube link to get the full video transcript",
-    "rateLimitNotice": "10 free uses per day across all YouTube tools. Resets after 24 hours.",
+    "rateLimitNotice": "10 free uses per day across all YouTube tools. Resets after 24 hours. Videos limited to 60 minutes.",
     "urlPlaceholder": "Paste YouTube video link",
     "getTranscript": "Get Transcript",
     "selectLanguage": "Subtitles:",
@@ -486,8 +486,11 @@
       "noSubtitles": "No subtitles available for this video",
       "videoUnavailable": "Video is unavailable",
       "fetchFailed": "Failed to fetch subtitles. Please try again later.",
-      "tooManyRequests": "Daily usage limit reached. Please try again tomorrow."
+      "tooManyRequests": "Daily usage limit reached. Please try again tomorrow.",
+      "durationExceeded": "This video exceeds the 60-minute limit. Please try a shorter video."
     },
+    "durationWarningTitle": "Video Duration Limit",
+    "durationWarningOk": "OK",
     "retry": "Retry",
     "howToUseTitle": "How to Use",
     "steps": {
@@ -509,7 +512,7 @@
       "q4": "Do I need to sign in?",
       "a4": "No, it's completely free and requires no login or registration.",
       "q5": "Is there a video length limit?",
-      "a5": "Videos under 60 minutes are recommended. Longer videos may have very large transcripts."
+      "a5": "Videos are limited to 60 minutes. Longer videos cannot be processed."
     },
     "relatedToolsTitle": "Related Tools",
     "relatedTools": {
@@ -522,7 +525,7 @@
   "YouTubeSummary": {
     "title": "YouTube AI Summary",
     "subtitle": "Paste a YouTube link and get an AI-generated summary of the video",
-    "rateLimitNotice": "10 free uses per day across all YouTube tools. Resets after 24 hours.",
+    "rateLimitNotice": "10 free uses per day across all YouTube tools. Resets after 24 hours. Videos limited to 60 minutes.",
     "urlPlaceholder": "Paste YouTube video link",
     "generateSummary": "Generate Summary",
     "loading": "AI is generating summary...",
@@ -539,8 +542,11 @@
       "noSubtitles": "No subtitles available for this video",
       "videoUnavailable": "Video is unavailable",
       "fetchFailed": "Failed to fetch subtitles. Please try again later.",
-      "tooManyRequests": "Daily usage limit reached. Please try again tomorrow."
+      "tooManyRequests": "Daily usage limit reached. Please try again tomorrow.",
+      "durationExceeded": "This video exceeds the 60-minute limit. Please try a shorter video."
     },
+    "durationWarningTitle": "Video Duration Limit",
+    "durationWarningOk": "OK",
     "retry": "Retry",
     "captchaRequired": "Please complete verification to continue",
     "howToUseTitle": "How to Use",
@@ -563,7 +569,7 @@
       "q4": "What can I use it for?",
       "a4": "Great for quickly understanding video content, study notes, meeting summaries, or sharing key points with others.",
       "q5": "Is there a video length limit?",
-      "a5": "Videos under 60 minutes are recommended. Longer videos may affect summary quality due to transcript length."
+      "a5": "Videos are limited to 60 minutes. Longer videos cannot be processed."
     },
     "relatedToolsTitle": "Related Tools",
     "relatedTools": {
@@ -576,7 +582,7 @@
   "YouTubeTranslate": {
     "title": "YouTube Subtitle Translator",
     "subtitle": "Paste a YouTube link and translate subtitles to your preferred language",
-    "rateLimitNotice": "10 free uses per day across all YouTube tools. Resets after 24 hours.",
+    "rateLimitNotice": "10 free uses per day across all YouTube tools. Resets after 24 hours. Videos limited to 60 minutes.",
     "urlPlaceholder": "Paste YouTube video link",
     "selectTargetLanguage": "Target Language",
     "translate": "Translate Subtitles",
@@ -593,8 +599,11 @@
       "noSubtitles": "No subtitles available for this video. Translation is not possible.",
       "videoUnavailable": "Video is unavailable",
       "fetchFailed": "Failed to fetch subtitles. Please try again later.",
-      "tooManyRequests": "Daily usage limit reached. Please try again tomorrow."
+      "tooManyRequests": "Daily usage limit reached. Please try again tomorrow.",
+      "durationExceeded": "This video exceeds the 60-minute limit. Please try a shorter video."
     },
+    "durationWarningTitle": "Video Duration Limit",
+    "durationWarningOk": "OK",
     "retry": "Retry",
     "captchaRequired": "Please complete verification to continue",
     "howToUseTitle": "How to Use",
@@ -617,7 +626,9 @@
       "q4": "How long does translation take?",
       "a4": "Usually 10-30 seconds, depending on the subtitle length.",
       "q5": "What if the video has no subtitles?",
-      "a5": "YouTube auto-generates subtitles for most videos. If a video has no subtitles at all, translation is not possible."
+      "a5": "YouTube auto-generates subtitles for most videos. If a video has no subtitles at all, translation is not possible.",
+      "q6": "Is there a video length limit?",
+      "a6": "Videos are limited to 60 minutes. Longer videos cannot be processed."
     },
     "relatedToolsTitle": "Related Tools",
     "relatedTools": {

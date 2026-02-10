@@ -4,6 +4,7 @@ const API_ERROR_KEYS: Record<string, string> = {
   "No subtitles available for this video": "apiErrors.noSubtitles",
   "Video is unavailable": "apiErrors.videoUnavailable",
   "Too many requests. Please try again later.": "apiErrors.tooManyRequests",
+  "Video exceeds 60 minute duration limit": "apiErrors.durationExceeded",
 };
 
 export function getErrorMessageKey(apiMessage: string): string | null {

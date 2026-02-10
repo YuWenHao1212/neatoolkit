@@ -59,6 +59,7 @@ export default async function YouTubeTranslatePage({
     { question: t("faqs.q3"), answer: t("faqs.a3") },
     { question: t("faqs.q4"), answer: t("faqs.a4") },
     { question: t("faqs.q5"), answer: t("faqs.a5") },
+    { question: t("faqs.q6"), answer: t("faqs.a6") },
   ];
 
   const relatedTools = [

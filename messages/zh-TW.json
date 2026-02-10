@@ -465,7 +465,7 @@
   "YouTubeSubtitle": {
     "title": "YouTube 字幕下載工具",
     "subtitle": "貼上 YouTube 連結，一鍵取得影片逐字稿",
-    "rateLimitNotice": "每人每日可免費使用 10 次（所有 YouTube 工具共用額度），24 小時後自動重置",
+    "rateLimitNotice": "每人每日可免費使用 10 次（所有 YouTube 工具共用額度），24 小時後自動重置。影片長度限 60 分鐘內",
     "urlPlaceholder": "貼上 YouTube 影片連結",
     "getTranscript": "取得逐字稿",
     "selectLanguage": "可用字幕：",
@@ -486,8 +486,11 @@
       "noSubtitles": "此影片沒有可用的字幕",
       "videoUnavailable": "影片無法存取",
       "fetchFailed": "取得字幕失敗，請稍後再試",
-      "tooManyRequests": "今日使用次數已達上限，請明天再試"
+      "tooManyRequests": "今日使用次數已達上限，請明天再試",
+      "durationExceeded": "此影片超過 60 分鐘，無法處理。請選擇較短的影片。"
     },
+    "durationWarningTitle": "影片長度超過限制",
+    "durationWarningOk": "我知道了",
     "retry": "重試",
     "howToUseTitle": "如何使用",
     "steps": {
@@ -509,7 +512,7 @@
       "q4": "需要登入才能使用嗎？",
       "a4": "不需要，完全免費且不需要任何登入或註冊。",
       "q5": "影片長度有限制嗎？",
-      "a5": "建議 60 分鐘以內的影片，超過可能會因為字幕內容過長而影響體驗。"
+      "a5": "影片長度限制為 60 分鐘以內，超過將無法使用。"
     },
     "relatedToolsTitle": "相關工具",
     "relatedTools": {
@@ -522,7 +525,7 @@
   "YouTubeSummary": {
     "title": "YouTube AI 摘要工具",
     "subtitle": "貼上 YouTube 連結，AI 自動產生影片重點摘要",
-    "rateLimitNotice": "每人每日可免費使用 10 次（所有 YouTube 工具共用額度），24 小時後自動重置",
+    "rateLimitNotice": "每人每日可免費使用 10 次（所有 YouTube 工具共用額度），24 小時後自動重置。影片長度限 60 分鐘內",
     "urlPlaceholder": "貼上 YouTube 影片連結",
     "generateSummary": "產生摘要",
     "loading": "AI 正在產生摘要...",
@@ -539,8 +542,11 @@
       "noSubtitles": "此影片沒有可用的字幕，無法產生摘要",
       "videoUnavailable": "影片無法存取",
       "fetchFailed": "取得字幕失敗，請稍後再試",
-      "tooManyRequests": "今日使用次數已達上限，請明天再試"
+      "tooManyRequests": "今日使用次數已達上限，請明天再試",
+      "durationExceeded": "此影片超過 60 分鐘，無法處理。請選擇較短的影片。"
     },
+    "durationWarningTitle": "影片長度超過限制",
+    "durationWarningOk": "我知道了",
     "retry": "重試",
     "captchaRequired": "請完成驗證後再試",
     "howToUseTitle": "如何使用",
@@ -563,7 +569,7 @@
       "q4": "可以用在哪些情境？",
       "a4": "適合快速了解影片內容、做學習筆記、整理會議紀錄、或分享影片重點給他人。",
       "q5": "影片長度有限制嗎？",
-      "a5": "建議 60 分鐘以內的影片，超過可能會因為字幕內容過長而影響摘要品質。"
+      "a5": "影片長度限制為 60 分鐘以內，超過將無法使用。"
     },
     "relatedToolsTitle": "相關工具",
     "relatedTools": {
@@ -576,7 +582,7 @@
   "YouTubeTranslate": {
     "title": "YouTube 字幕翻譯工具",
     "subtitle": "貼上 YouTube 連結，AI 將字幕翻譯成你需要的語言",
-    "rateLimitNotice": "每人每日可免費使用 10 次（所有 YouTube 工具共用額度），24 小時後自動重置",
+    "rateLimitNotice": "每人每日可免費使用 10 次（所有 YouTube 工具共用額度），24 小時後自動重置。影片長度限 60 分鐘內",
     "urlPlaceholder": "貼上 YouTube 影片連結",
     "selectTargetLanguage": "翻譯目標語言",
     "translate": "翻譯字幕",
@@ -593,8 +599,11 @@
       "noSubtitles": "此影片沒有可用的字幕，無法進行翻譯",
       "videoUnavailable": "影片無法存取",
       "fetchFailed": "取得字幕失敗，請稍後再試",
-      "tooManyRequests": "今日使用次數已達上限，請明天再試"
+      "tooManyRequests": "今日使用次數已達上限，請明天再試",
+      "durationExceeded": "此影片超過 60 分鐘，無法處理。請選擇較短的影片。"
     },
+    "durationWarningTitle": "影片長度超過限制",
+    "durationWarningOk": "我知道了",
     "retry": "重試",
     "captchaRequired": "請完成驗證後再試",
     "howToUseTitle": "如何使用",
@@ -617,7 +626,9 @@
       "q4": "翻譯整部影片需要多久？",
       "a4": "通常在 10-30 秒內完成，取決於影片字幕長度。",
       "q5": "原始影片沒有字幕怎麼辦？",
-      "a5": "YouTube 會為大多數影片自動產生字幕。如果影片完全沒有字幕，則無法進行翻譯。"
+      "a5": "YouTube 會為大多數影片自動產生字幕。如果影片完全沒有字幕，則無法進行翻譯。",
+      "q6": "影片長度有限制嗎？",
+      "a6": "影片長度限制為 60 分鐘以內，超過將無法使用。"
     },
     "relatedToolsTitle": "相關工具",
     "relatedTools": {

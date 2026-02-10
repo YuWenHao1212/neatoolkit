@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { fetchApi, ApiError } from "@/lib/api";
 import { getErrorMessageKey } from "@/lib/error-messages";
 import TurnstileWidget from "@/components/shared/TurnstileWidget";
+import WarningModal from "@/components/shared/WarningModal";
 import VideoInfoCard from "@/components/shared/VideoInfoCard";
 
 type Status = "idle" | "loading" | "done" | "error";
@@ -31,6 +32,7 @@ export default function YouTubeSummary() {
   const [copied, setCopied] = useState(false);
   const [captchaRequired, setCaptchaRequired] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [durationWarning, setDurationWarning] = useState(false);
 
   // Restore URL and cached result from sessionStorage on mount
   useEffect(() => {
@@ -104,6 +106,11 @@ export default function YouTubeSummary() {
       }
       if (err instanceof ApiError) {
         const key = getErrorMessageKey(err.message);
+        if (key === "apiErrors.durationExceeded") {
+          setDurationWarning(true);
+          setStatus("idle");
+          return;
+        }
         setError(key ? t(key) : err.message);
       } else {
         setError(t("error"));
@@ -221,6 +228,15 @@ export default function YouTubeSummary() {
           </div>
         </div>
       )}
+
+      {/* Duration warning modal */}
+      <WarningModal
+        isOpen={durationWarning}
+        onClose={() => setDurationWarning(false)}
+        title={t("durationWarningTitle")}
+        message={t("apiErrors.durationExceeded")}
+        buttonLabel={t("durationWarningOk")}
+      />
     </div>
   );
 }
