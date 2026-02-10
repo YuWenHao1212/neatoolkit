@@ -224,7 +224,7 @@ export default function YouTubeSubtitle() {
   const isSubmitDisabled = status === "loading" || status === "done";
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-5">
       {/* URL input + submit button */}
       <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
         <input
@@ -244,57 +244,59 @@ export default function YouTubeSubtitle() {
         </button>
       </div>
 
-      {/* Language pills (visible after result is loaded) */}
-      {result && result.available_languages.length > 0 && (
-        <div className="flex flex-col gap-2">
-          <p className="text-sm font-medium text-ink-700">
-            {t("selectLanguage")}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {result.available_languages.map((lang) => (
-              <button
-                key={lang.code}
-                type="button"
-                onClick={() => handleLanguageSelect(lang.code)}
-                disabled={status === "loading"}
-                className={
-                  selectedLanguage === lang.code
-                    ? "rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-white"
-                    : "cursor-pointer rounded-full border border-border bg-white px-4 py-1.5 text-sm text-ink-600 hover:bg-cream-200"
-                }
-              >
-                {lang.name}
-                {lang.is_generated && (
-                  <span className="ml-1 text-xs opacity-60">(auto)</span>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Timestamp toggle (visible after result is loaded) */}
+      {/* Language pills + timestamp toggle (visible after result) */}
       {result && (
-        <div className="flex items-center gap-3">
-          <span className="text-sm font-medium text-ink-700">
-            {t("timestamp")}
-          </span>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={showTimestamps}
-            onClick={handleTimestampToggle}
-            disabled={status === "loading"}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-              showTimestamps ? "bg-accent" : "bg-ink-300"
-            }`}
-          >
-            <span
-              className={`inline-block h-4 w-4 rounded-full bg-white transition-transform ${
-                showTimestamps ? "translate-x-6" : "translate-x-1"
-              }`}
-            />
-          </button>
+        <div className="rounded-xl border border-border bg-white p-4">
+          {result.available_languages.length > 0 && (
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-medium text-ink-700">
+                  {t("selectLanguage")}
+                </p>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-ink-500">
+                    {t("timestamp")}
+                  </span>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={showTimestamps}
+                    onClick={handleTimestampToggle}
+                    disabled={status === "loading"}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      showTimestamps ? "bg-accent" : "bg-ink-300"
+                    }`}
+                  >
+                    <span
+                      className={`inline-block h-4 w-4 rounded-full bg-white transition-transform ${
+                        showTimestamps ? "translate-x-6" : "translate-x-1"
+                      }`}
+                    />
+                  </button>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {result.available_languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    type="button"
+                    onClick={() => handleLanguageSelect(lang.code)}
+                    disabled={status === "loading"}
+                    className={
+                      selectedLanguage === lang.code
+                        ? "rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-white"
+                        : "cursor-pointer rounded-full border border-border bg-white px-4 py-1.5 text-sm text-ink-600 hover:bg-cream-200"
+                    }
+                  >
+                    {lang.name}
+                    {lang.is_generated && (
+                      <span className="ml-1 text-xs opacity-60">(auto)</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -323,23 +325,21 @@ export default function YouTubeSubtitle() {
       {/* Result state */}
       {status === "done" && result && (
         <div className="flex flex-col gap-4">
-          {/* Preview header */}
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-ink-700">
-              {t("preview")}
-              <span className="ml-2 text-ink-500">
-                {t("totalLines", { count: result.total_lines })}
-              </span>
-            </p>
-          </div>
-
           {/* Preview box */}
           <div className="rounded-xl border border-border bg-cream-200 p-4">
-            <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-ink-700">
+            <div className="mb-3 flex items-center justify-between">
+              <p className="text-sm font-medium text-ink-700">
+                {t("preview")}
+              </p>
+              <span className="text-xs text-ink-500">
+                {t("totalLines", { count: result.total_lines })}
+              </span>
+            </div>
+            <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap font-sans text-sm leading-relaxed text-ink-600">
               {previewText}
             </pre>
             {result.total_lines > PREVIEW_LINES && (
-              <p className="mt-2 text-xs text-ink-400">...</p>
+              <p className="mt-1 text-xs text-ink-400">...</p>
             )}
           </div>
 
