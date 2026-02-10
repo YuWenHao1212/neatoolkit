@@ -1,5 +1,3 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL!;
-
 export class ApiError extends Error {
   status: number;
   constructor(message: string, status: number) {
@@ -11,14 +9,15 @@ export class ApiError extends Error {
 interface FetchApiOptions {
   timeout?: number;
   signal?: AbortSignal;
+  headers?: Record<string, string>;
 }
 
 export async function fetchApi(
   path: string,
-  body: FormData,
+  body: FormData | string | null,
   options: FetchApiOptions = {},
 ): Promise<Response> {
-  const { timeout = 120000, signal } = options;
+  const { timeout = 120000, signal, headers: extraHeaders } = options;
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeout);
@@ -28,10 +27,17 @@ export async function fetchApi(
     : controller.signal;
 
   try {
-    const response = await fetch(`${API_BASE}${path}`, {
+    const fetchHeaders: Record<string, string> = { ...extraHeaders };
+
+    if (typeof body === "string") {
+      fetchHeaders["Content-Type"] = "application/json";
+    }
+
+    const response = await fetch(path, {
       method: "POST",
       body,
       signal: combinedSignal,
+      headers: Object.keys(fetchHeaders).length > 0 ? fetchHeaders : undefined,
     });
 
     clearTimeout(timeoutId);
@@ -42,20 +48,18 @@ export async function fetchApi(
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
-      const message = errorData?.detail || `Request failed (${response.status})`;
+      const message =
+        errorData?.detail || `Request failed (${response.status})`;
       throw new ApiError(message, response.status);
     }
 
     return response;
   } catch (error) {
     clearTimeout(timeoutId);
-
     if (error instanceof ApiError) throw error;
-
     if (error instanceof DOMException && error.name === "AbortError") {
       throw new ApiError("SERVER_WARMING_UP", 408);
     }
-
     throw new ApiError("Network error. Please check your connection.", 0);
   }
 }
