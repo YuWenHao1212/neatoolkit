@@ -4,6 +4,7 @@ import LocaleSwitcher from "@/components/layout/LocaleSwitcher";
 import ImageToolsDropdown from "@/components/layout/ImageToolsDropdown";
 import VideoToolsDropdown from "@/components/layout/VideoToolsDropdown";
 import TextToolsDropdown from "@/components/layout/TextToolsDropdown";
+import YouTubeToolsDropdown from "@/components/layout/YouTubeToolsDropdown";
 import MobileNav from "@/components/layout/MobileNav";
 
 export default async function Header() {
@@ -24,6 +25,12 @@ export default async function Header() {
     { href: "/text/fb-post-formatter", label: t("fbPostFormatter") },
   ];
 
+  const youtubeToolItems = [
+    { href: "/youtube/subtitle", label: t("youtubeSubtitle") },
+    { href: "/youtube/summary", label: t("youtubeSummary") },
+    { href: "/youtube/translate", label: t("youtubeTranslate") },
+  ];
+
   const mobileNavLinks = [
     {
       href: "/image/compress",
@@ -42,6 +49,12 @@ export default async function Header() {
       label: t("textTools"),
       active: true,
       subItems: textToolItems,
+    },
+    {
+      href: "/youtube/subtitle",
+      label: t("youtubeTools"),
+      active: true,
+      subItems: youtubeToolItems,
     },
     { href: "#", label: t("careerTools") },
   ];
@@ -72,6 +85,11 @@ export default async function Header() {
           <TextToolsDropdown
             label={t("textTools")}
             items={textToolItems}
+            active
+          />
+          <YouTubeToolsDropdown
+            label={t("youtubeTools")}
+            items={youtubeToolItems}
             active
           />
           <LocaleSwitcher />

@@ -13,7 +13,13 @@
     "videoCompressTitle": "線上壓縮影片 — 免費影片壓縮工具，手機也能用 | Neatoolkit",
     "videoCompressDescription": "免費線上壓縮影片工具，iPhone、手機直接用瀏覽器壓縮 MP4 影片。免安裝任何 App，支援調整解析度與品質，適合 LINE、IG 限動、Email 分享。",
     "videoToGifTitle": "線上影片轉 GIF — 免費 GIF 製作工具，手機也能用 | Neatoolkit",
-    "videoToGifDescription": "免費線上影片轉 GIF 工具，iPhone、手機直接用瀏覽器將 MP4 影片轉為 GIF 動圖。免安裝 App，支援自訂尺寸和幀率，適合製作社群貼文、聊天表情和教學動圖。"
+    "videoToGifDescription": "免費線上影片轉 GIF 工具，iPhone、手機直接用瀏覽器將 MP4 影片轉為 GIF 動圖。免安裝 App，支援自訂尺寸和幀率，適合製作社群貼文、聊天表情和教學動圖。",
+    "youtubeSubtitleTitle": "YouTube 字幕下載工具 — 免費線上取得影片逐字稿 | Neatoolkit",
+    "youtubeSubtitleDescription": "免費線上 YouTube 字幕下載工具，貼上連結即可取得影片完整逐字稿。支援多語言字幕、自動產生字幕、時間軸顯示。",
+    "youtubeSummaryTitle": "YouTube AI 摘要工具 — 免費影片重點摘要 | Neatoolkit",
+    "youtubeSummaryDescription": "免費 YouTube AI 摘要工具，貼上影片連結即可自動產生繁體中文重點摘要。AI 快速歸納影片內容，節省觀看時間。",
+    "youtubeTranslateTitle": "YouTube 字幕翻譯工具 — 免費線上翻譯影片字幕 | Neatoolkit",
+    "youtubeTranslateDescription": "免費線上 YouTube 字幕翻譯工具，將影片字幕翻譯成繁體中文、英文、日文、韓文。AI 智慧翻譯，自然流暢。"
   },
   "Header": {
     "imageTools": "圖片工具",
@@ -25,7 +31,11 @@
     "imageCompress": "圖片壓縮",
     "removeBackground": "AI 去背",
     "videoCompress": "影片壓縮",
-    "videoToGif": "影片轉 GIF"
+    "videoToGif": "影片轉 GIF",
+    "youtubeTools": "YouTube",
+    "youtubeSubtitle": "字幕下載",
+    "youtubeSummary": "AI 摘要",
+    "youtubeTranslate": "字幕翻譯"
   },
   "Footer": {
     "about": "關於我們",
@@ -196,6 +206,7 @@
     "imageToolsTitle": "圖片工具",
     "videoToolsTitle": "影片工具",
     "textToolsTitle": "文字工具",
+    "youtubeToolsTitle": "YouTube 工具",
     "tools": {
       "imageCompress": "圖片壓縮",
       "imageCompressDesc": "壓縮 JPG、PNG、WebP 圖片，縮小檔案大小。",
@@ -208,7 +219,13 @@
       "fontGenerator": "特殊字體產生器",
       "fontGeneratorDesc": "15 種特殊字體風格，一鍵複製。",
       "fbPostFormatter": "FB 貼文排版",
-      "fbPostFormatterDesc": "粗體、斜體、換行保留，一鍵排版。"
+      "fbPostFormatterDesc": "粗體、斜體、換行保留，一鍵排版。",
+      "youtubeSubtitle": "YouTube 字幕下載",
+      "youtubeSubtitleDesc": "貼上連結，一鍵取得 YouTube 影片完整逐字稿",
+      "youtubeSummary": "YouTube AI 摘要",
+      "youtubeSummaryDesc": "AI 自動產生影片重點摘要，快速掌握影片內容",
+      "youtubeTranslate": "YouTube 字幕翻譯",
+      "youtubeTranslateDesc": "將影片字幕翻譯成繁體中文、英文、日文、韓文"
     }
   },
   "ImageToolsNav": {
@@ -439,6 +456,147 @@
   "VideoToolsNav": {
     "videoCompress": "影片壓縮",
     "videoToGif": "影片轉 GIF"
+  },
+  "YouTubeToolsNav": {
+    "subtitle": "字幕下載",
+    "summary": "AI 摘要",
+    "translate": "字幕翻譯"
+  },
+  "YouTubeSubtitle": {
+    "title": "YouTube 字幕下載工具",
+    "subtitle": "貼上 YouTube 連結，一鍵取得影片逐字稿",
+    "urlPlaceholder": "貼上 YouTube 影片連結",
+    "getTranscript": "取得逐字稿",
+    "selectLanguage": "選擇字幕語言",
+    "timestamp": "時間軸",
+    "preview": "逐字稿預覽",
+    "totalLines": "共 {count} 行",
+    "viewFull": "查看完整逐字稿",
+    "copyAll": "複製全文",
+    "download": "下載 .txt",
+    "copied": "已複製！",
+    "loading": "正在取得字幕...",
+    "noSubtitles": "此影片沒有可用的字幕",
+    "invalidUrl": "請輸入有效的 YouTube 連結",
+    "error": "取得字幕失敗，請重試",
+    "retry": "重試",
+    "howToUseTitle": "如何使用",
+    "steps": {
+      "step1Title": "貼上連結",
+      "step1Desc": "複製 YouTube 影片的網址，貼到上方的輸入框",
+      "step2Title": "選擇語言",
+      "step2Desc": "從可用的字幕語言中選擇你需要的語言",
+      "step3Title": "取得逐字稿",
+      "step3Desc": "點擊按鈕即可取得完整逐字稿，支援複製和下載"
+    },
+    "faqTitle": "常見問題",
+    "faqs": {
+      "q1": "支援哪些 YouTube 影片？",
+      "a1": "支援所有有開啟字幕（自動產生或手動上傳）的公開 YouTube 影片。",
+      "q2": "可以下載自動產生的字幕嗎？",
+      "a2": "可以，YouTube 自動產生的字幕和創作者手動上傳的字幕都支援下載。",
+      "q3": "逐字稿的格式是什麼？",
+      "a3": "預設為純文字格式，方便閱讀和使用。也可以開啟時間軸顯示每句話的時間點。",
+      "q4": "需要登入才能使用嗎？",
+      "a4": "不需要，完全免費且不需要任何登入或註冊。",
+      "q5": "影片長度有限制嗎？",
+      "a5": "建議 60 分鐘以內的影片，超過可能會因為字幕內容過長而影響體驗。"
+    },
+    "relatedToolsTitle": "相關工具",
+    "relatedTools": {
+      "summary": "YouTube AI 摘要",
+      "summaryDesc": "AI 自動產生影片重點摘要，快速掌握影片內容",
+      "translate": "YouTube 字幕翻譯",
+      "translateDesc": "將影片字幕翻譯成繁體中文、英文、日文、韓文"
+    }
+  },
+  "YouTubeSummary": {
+    "title": "YouTube AI 摘要工具",
+    "subtitle": "貼上 YouTube 連結，AI 自動產生影片重點摘要",
+    "urlPlaceholder": "貼上 YouTube 影片連結",
+    "generateSummary": "產生摘要",
+    "loading": "AI 正在產生摘要...",
+    "copyAll": "複製摘要",
+    "copied": "已複製！",
+    "regenerate": "重新產生",
+    "error": "產生摘要失敗，請重試",
+    "retry": "重試",
+    "captchaRequired": "請完成驗證後再試",
+    "howToUseTitle": "如何使用",
+    "steps": {
+      "step1Title": "貼上連結",
+      "step1Desc": "複製 YouTube 影片的網址，貼到上方的輸入框",
+      "step2Title": "AI 產生摘要",
+      "step2Desc": "AI 自動擷取字幕並產生結構化的繁體中文摘要",
+      "step3Title": "複製使用",
+      "step3Desc": "一鍵複製摘要內容，用於筆記、報告或分享"
+    },
+    "faqTitle": "常見問題",
+    "faqs": {
+      "q1": "AI 摘要支援哪些語言的影片？",
+      "a1": "支援所有有字幕的 YouTube 影片，無論原始語言為何，摘要都會以繁體中文呈現。",
+      "q2": "摘要的內容準確嗎？",
+      "a2": "AI 摘要基於影片字幕內容產生，準確度取決於字幕品質。建議搭配原始影片確認重要資訊。",
+      "q3": "每天可以使用幾次？",
+      "a3": "免費用戶每天可使用數次。超過後需完成簡單的人機驗證即可繼續使用。",
+      "q4": "可以用在哪些情境？",
+      "a4": "適合快速了解影片內容、做學習筆記、整理會議紀錄、或分享影片重點給他人。",
+      "q5": "影片長度有限制嗎？",
+      "a5": "建議 60 分鐘以內的影片，超過可能會因為字幕內容過長而影響摘要品質。"
+    },
+    "relatedToolsTitle": "相關工具",
+    "relatedTools": {
+      "subtitle": "YouTube 字幕下載",
+      "subtitleDesc": "貼上連結，一鍵取得 YouTube 影片完整逐字稿",
+      "translate": "YouTube 字幕翻譯",
+      "translateDesc": "將影片字幕翻譯成繁體中文、英文、日文、韓文"
+    }
+  },
+  "YouTubeTranslate": {
+    "title": "YouTube 字幕翻譯工具",
+    "subtitle": "貼上 YouTube 連結，AI 將字幕翻譯成你需要的語言",
+    "urlPlaceholder": "貼上 YouTube 影片連結",
+    "selectTargetLanguage": "選擇翻譯語言",
+    "translate": "翻譯字幕",
+    "loading": "AI 正在翻譯...",
+    "preview": "翻譯預覽",
+    "totalLines": "共 {count} 行",
+    "viewFull": "查看完整翻譯",
+    "copyAll": "複製全文",
+    "download": "下載 .txt",
+    "copied": "已複製！",
+    "error": "翻譯失敗，請重試",
+    "retry": "重試",
+    "captchaRequired": "請完成驗證後再試",
+    "howToUseTitle": "如何使用",
+    "steps": {
+      "step1Title": "貼上連結",
+      "step1Desc": "複製 YouTube 影片的網址，貼到上方的輸入框",
+      "step2Title": "選擇語言",
+      "step2Desc": "選擇你想要翻譯的目標語言：繁體中文、英文、日文或韓文",
+      "step3Title": "取得翻譯",
+      "step3Desc": "AI 自動翻譯字幕內容，支援複製和下載"
+    },
+    "faqTitle": "常見問題",
+    "faqs": {
+      "q1": "支援哪些翻譯語言？",
+      "a1": "目前支援繁體中文（台灣）、英文、日文、韓文四種語言。",
+      "q2": "翻譯品質如何？",
+      "a2": "使用 AI 翻譯引擎，翻譯結果自然流暢。但建議重要內容仍需人工校對。",
+      "q3": "每天可以使用幾次？",
+      "a3": "免費用戶每天可使用數次。超過後需完成簡單的人機驗證即可繼續使用。",
+      "q4": "翻譯整部影片需要多久？",
+      "a4": "通常在 10-30 秒內完成，取決於影片字幕長度。",
+      "q5": "原始影片沒有字幕怎麼辦？",
+      "a5": "YouTube 會為大多數影片自動產生字幕。如果影片完全沒有字幕，則無法進行翻譯。"
+    },
+    "relatedToolsTitle": "相關工具",
+    "relatedTools": {
+      "subtitle": "YouTube 字幕下載",
+      "subtitleDesc": "貼上連結，一鍵取得 YouTube 影片完整逐字稿",
+      "summary": "YouTube AI 摘要",
+      "summaryDesc": "AI 自動產生影片重點摘要，快速掌握影片內容"
+    }
   },
   "LocaleSwitcher": {
     "label": "語言",

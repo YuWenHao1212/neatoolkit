@@ -57,6 +57,14 @@ const toolCategories = [
       { key: "fbPostFormatter" as const, href: "/text/fb-post-formatter" },
     ],
   },
+  {
+    titleKey: "youtubeToolsTitle" as const,
+    tools: [
+      { key: "youtubeSubtitle" as const, href: "/youtube/subtitle" },
+      { key: "youtubeSummary" as const, href: "/youtube/summary" },
+      { key: "youtubeTranslate" as const, href: "/youtube/translate" },
+    ],
+  },
 ];
 
 export default async function HomePage({

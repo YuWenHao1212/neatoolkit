@@ -13,7 +13,13 @@
     "videoCompressTitle": "Video Compressor Online — Free MP4 Compression, Works on Phone | Neatoolkit",
     "videoCompressDescription": "Free online video compressor. Compress MP4 videos from iPhone or any phone directly in your browser. No app needed — adjust resolution and quality for LINE, Instagram Stories, and email.",
     "videoToGifTitle": "Video to GIF Online — Free GIF Maker, Works on Phone | Neatoolkit",
-    "videoToGifDescription": "Free online video to GIF converter. Convert MP4 videos to animated GIFs from iPhone or any phone directly in your browser. No app needed — customize size and frame rate for social media, chat stickers, and tutorials."
+    "videoToGifDescription": "Free online video to GIF converter. Convert MP4 videos to animated GIFs from iPhone or any phone directly in your browser. No app needed — customize size and frame rate for social media, chat stickers, and tutorials.",
+    "youtubeSubtitleTitle": "YouTube Subtitle Downloader — Free Online Transcript Extractor | Neatoolkit",
+    "youtubeSubtitleDescription": "Free online YouTube subtitle downloader. Paste a video link to get the full transcript. Supports multiple languages, auto-generated captions, and timestamp display.",
+    "youtubeSummaryTitle": "YouTube AI Summary — Free Video Summary Generator | Neatoolkit",
+    "youtubeSummaryDescription": "Free YouTube AI summary tool. Paste a video link to get an AI-generated summary with key points. Save time by quickly understanding video content.",
+    "youtubeTranslateTitle": "YouTube Subtitle Translator — Free Online Translation | Neatoolkit",
+    "youtubeTranslateDescription": "Free online YouTube subtitle translator. Translate video subtitles to Chinese, English, Japanese, or Korean with AI-powered natural translation."
   },
   "Header": {
     "imageTools": "Image Tools",
@@ -25,7 +31,11 @@
     "imageCompress": "Image Compressor",
     "removeBackground": "Background Remover",
     "videoCompress": "Video Compressor",
-    "videoToGif": "Video to GIF"
+    "videoToGif": "Video to GIF",
+    "youtubeTools": "YouTube",
+    "youtubeSubtitle": "Subtitle Download",
+    "youtubeSummary": "AI Summary",
+    "youtubeTranslate": "Subtitle Translate"
   },
   "Footer": {
     "about": "About",
@@ -196,6 +206,7 @@
     "imageToolsTitle": "Image Tools",
     "videoToolsTitle": "Video Tools",
     "textToolsTitle": "Text Tools",
+    "youtubeToolsTitle": "YouTube Tools",
     "tools": {
       "imageCompress": "Image Compressor",
       "imageCompressDesc": "Compress JPG, PNG, WebP images to reduce file size.",
@@ -208,7 +219,13 @@
       "fontGenerator": "Font Generator",
       "fontGeneratorDesc": "15 special font styles with one-click copy.",
       "fbPostFormatter": "FB Post Formatter",
-      "fbPostFormatterDesc": "Bold, italic, line break preservation for Facebook."
+      "fbPostFormatterDesc": "Bold, italic, line break preservation for Facebook.",
+      "youtubeSubtitle": "YouTube Subtitle Download",
+      "youtubeSubtitleDesc": "Paste a link to get the full transcript from any YouTube video",
+      "youtubeSummary": "YouTube AI Summary",
+      "youtubeSummaryDesc": "AI-generated video summaries with key points",
+      "youtubeTranslate": "YouTube Subtitle Translate",
+      "youtubeTranslateDesc": "Translate video subtitles to Chinese, English, Japanese, or Korean"
     }
   },
   "ImageToolsNav": {
@@ -439,6 +456,147 @@
   "VideoToolsNav": {
     "videoCompress": "Video Compressor",
     "videoToGif": "Video to GIF"
+  },
+  "YouTubeToolsNav": {
+    "subtitle": "Subtitle Download",
+    "summary": "AI Summary",
+    "translate": "Subtitle Translate"
+  },
+  "YouTubeSubtitle": {
+    "title": "YouTube Subtitle Downloader",
+    "subtitle": "Paste a YouTube link to get the full video transcript",
+    "urlPlaceholder": "Paste YouTube video link",
+    "getTranscript": "Get Transcript",
+    "selectLanguage": "Select subtitle language",
+    "timestamp": "Timestamps",
+    "preview": "Transcript Preview",
+    "totalLines": "{count} lines total",
+    "viewFull": "View Full Transcript",
+    "copyAll": "Copy All",
+    "download": "Download .txt",
+    "copied": "Copied!",
+    "loading": "Fetching subtitles...",
+    "noSubtitles": "No subtitles available for this video",
+    "invalidUrl": "Please enter a valid YouTube link",
+    "error": "Failed to fetch subtitles. Please try again.",
+    "retry": "Retry",
+    "howToUseTitle": "How to Use",
+    "steps": {
+      "step1Title": "Paste Link",
+      "step1Desc": "Copy the YouTube video URL and paste it into the input field above",
+      "step2Title": "Select Language",
+      "step2Desc": "Choose your preferred subtitle language from the available options",
+      "step3Title": "Get Transcript",
+      "step3Desc": "Click the button to get the full transcript, with options to copy or download"
+    },
+    "faqTitle": "FAQ",
+    "faqs": {
+      "q1": "Which YouTube videos are supported?",
+      "a1": "All public YouTube videos with subtitles (auto-generated or manually uploaded) are supported.",
+      "q2": "Can I download auto-generated subtitles?",
+      "a2": "Yes, both YouTube auto-generated captions and creator-uploaded subtitles are supported.",
+      "q3": "What format is the transcript?",
+      "a3": "Default is plain text for easy reading. You can also enable timestamps to show timing for each line.",
+      "q4": "Do I need to sign in?",
+      "a4": "No, it's completely free and requires no login or registration.",
+      "q5": "Is there a video length limit?",
+      "a5": "Videos under 60 minutes are recommended. Longer videos may have very large transcripts."
+    },
+    "relatedToolsTitle": "Related Tools",
+    "relatedTools": {
+      "summary": "YouTube AI Summary",
+      "summaryDesc": "AI-generated video summaries with key points",
+      "translate": "YouTube Subtitle Translate",
+      "translateDesc": "Translate video subtitles to Chinese, English, Japanese, or Korean"
+    }
+  },
+  "YouTubeSummary": {
+    "title": "YouTube AI Summary",
+    "subtitle": "Paste a YouTube link and get an AI-generated summary of the video",
+    "urlPlaceholder": "Paste YouTube video link",
+    "generateSummary": "Generate Summary",
+    "loading": "AI is generating summary...",
+    "copyAll": "Copy Summary",
+    "copied": "Copied!",
+    "regenerate": "Regenerate",
+    "error": "Failed to generate summary. Please try again.",
+    "retry": "Retry",
+    "captchaRequired": "Please complete verification to continue",
+    "howToUseTitle": "How to Use",
+    "steps": {
+      "step1Title": "Paste Link",
+      "step1Desc": "Copy the YouTube video URL and paste it into the input field above",
+      "step2Title": "AI Generates Summary",
+      "step2Desc": "AI automatically extracts subtitles and generates a structured summary",
+      "step3Title": "Copy & Use",
+      "step3Desc": "Copy the summary for notes, reports, or sharing with one click"
+    },
+    "faqTitle": "FAQ",
+    "faqs": {
+      "q1": "What video languages are supported?",
+      "a1": "Any YouTube video with subtitles is supported, regardless of the original language. The summary is generated in Traditional Chinese.",
+      "q2": "How accurate is the summary?",
+      "a2": "The AI summary is based on the video's subtitle content. Accuracy depends on subtitle quality. Verify important information with the original video.",
+      "q3": "How many times can I use it per day?",
+      "a3": "Free users can use it several times per day. After that, complete a simple verification to continue.",
+      "q4": "What can I use it for?",
+      "a4": "Great for quickly understanding video content, study notes, meeting summaries, or sharing key points with others.",
+      "q5": "Is there a video length limit?",
+      "a5": "Videos under 60 minutes are recommended. Longer videos may affect summary quality due to transcript length."
+    },
+    "relatedToolsTitle": "Related Tools",
+    "relatedTools": {
+      "subtitle": "YouTube Subtitle Download",
+      "subtitleDesc": "Paste a link to get the full transcript from any YouTube video",
+      "translate": "YouTube Subtitle Translate",
+      "translateDesc": "Translate video subtitles to Chinese, English, Japanese, or Korean"
+    }
+  },
+  "YouTubeTranslate": {
+    "title": "YouTube Subtitle Translator",
+    "subtitle": "Paste a YouTube link and translate subtitles to your preferred language",
+    "urlPlaceholder": "Paste YouTube video link",
+    "selectTargetLanguage": "Select target language",
+    "translate": "Translate Subtitles",
+    "loading": "AI is translating...",
+    "preview": "Translation Preview",
+    "totalLines": "{count} lines total",
+    "viewFull": "View Full Translation",
+    "copyAll": "Copy All",
+    "download": "Download .txt",
+    "copied": "Copied!",
+    "error": "Translation failed. Please try again.",
+    "retry": "Retry",
+    "captchaRequired": "Please complete verification to continue",
+    "howToUseTitle": "How to Use",
+    "steps": {
+      "step1Title": "Paste Link",
+      "step1Desc": "Copy the YouTube video URL and paste it into the input field above",
+      "step2Title": "Select Language",
+      "step2Desc": "Choose your target language: Chinese, English, Japanese, or Korean",
+      "step3Title": "Get Translation",
+      "step3Desc": "AI translates the subtitle content, with options to copy or download"
+    },
+    "faqTitle": "FAQ",
+    "faqs": {
+      "q1": "What languages are supported?",
+      "a1": "Currently supports Traditional Chinese (Taiwan), English, Japanese, and Korean.",
+      "q2": "How good is the translation?",
+      "a2": "Uses AI translation engine for natural, fluent results. Important content should still be reviewed by a human.",
+      "q3": "How many times can I use it per day?",
+      "a3": "Free users can use it several times per day. After that, complete a simple verification to continue.",
+      "q4": "How long does translation take?",
+      "a4": "Usually 10-30 seconds, depending on the subtitle length.",
+      "q5": "What if the video has no subtitles?",
+      "a5": "YouTube auto-generates subtitles for most videos. If a video has no subtitles at all, translation is not possible."
+    },
+    "relatedToolsTitle": "Related Tools",
+    "relatedTools": {
+      "subtitle": "YouTube Subtitle Download",
+      "subtitleDesc": "Paste a link to get the full transcript from any YouTube video",
+      "summary": "YouTube AI Summary",
+      "summaryDesc": "AI-generated video summaries with key points"
+    }
   },
   "LocaleSwitcher": {
     "label": "Language",
