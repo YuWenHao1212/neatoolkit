@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { fetchApi, ApiError } from "@/lib/api";
 import { getErrorMessageKey } from "@/lib/error-messages";
 import FullContentModal from "@/components/shared/FullContentModal";
+import TurnstileWidget from "@/components/shared/TurnstileWidget";
 import WarningModal from "@/components/shared/WarningModal";
 import VideoInfoCard from "@/components/shared/VideoInfoCard";
 
@@ -65,6 +66,8 @@ export default function YouTubeSubtitle() {
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [captchaRequired, setCaptchaRequired] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [durationWarning, setDurationWarning] = useState(false);
 
   // Restore URL and cached result from sessionStorage on mount
@@ -91,6 +94,8 @@ export default function YouTubeSubtitle() {
     setResult(null);
     setStatus("idle");
     setError("");
+    setCaptchaRequired(false);
+    setCaptchaToken(null);
     sessionStorage.removeItem(RESULT_CACHE_KEY);
   }, []);
 
@@ -114,6 +119,11 @@ export default function YouTubeSubtitle() {
     setError("");
 
     try {
+      const headers: Record<string, string> = {};
+      if (captchaToken) {
+        headers["x-turnstile-token"] = captchaToken;
+      }
+
       const response = await fetchApi(
         "/api/youtube/subtitle",
         JSON.stringify({
@@ -121,6 +131,7 @@ export default function YouTubeSubtitle() {
           language: selectedLanguage || undefined,
           include_timestamps: showTimestamps,
         }),
+        { headers },
       );
 
       const data: SubtitleResult = await response.json();
@@ -133,6 +144,11 @@ export default function YouTubeSubtitle() {
         setSelectedLanguage(data.language);
       }
     } catch (err) {
+      if (err instanceof ApiError && err.status === 403) {
+        setCaptchaRequired(true);
+        setStatus("idle");
+        return;
+      }
       if (err instanceof ApiError) {
         const key = getErrorMessageKey(err.message);
         if (key === "apiErrors.durationExceeded") {
@@ -146,7 +162,16 @@ export default function YouTubeSubtitle() {
       }
       setStatus("error");
     }
-  }, [videoUrl, selectedLanguage, showTimestamps, t]);
+  }, [videoUrl, selectedLanguage, showTimestamps, captchaToken, t]);
+
+  // Auto-retry after CAPTCHA verification
+  const submitRef = useRef(handleSubmit);
+  submitRef.current = handleSubmit;
+  useEffect(() => {
+    if (captchaToken && status === "idle") {
+      submitRef.current();
+    }
+  }, [captchaToken, status]);
 
   const handleLanguageSelect = useCallback(
     async (langCode: string) => {
@@ -274,6 +299,22 @@ export default function YouTubeSubtitle() {
           {status === "loading" ? t("loading") : t("getTranscript")}
         </button>
       </div>
+
+      {/* Turnstile CAPTCHA widget (conditional) */}
+      {captchaRequired && !captchaToken && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
+          <p className="mb-3 text-sm text-amber-700">
+            {t("captchaRequired")}
+          </p>
+          <TurnstileWidget
+            onVerify={(token) => {
+              setCaptchaToken(token);
+              setCaptchaRequired(false);
+            }}
+            onExpire={() => setCaptchaToken(null)}
+          />
+        </div>
+      )}
 
       {/* Loading state */}
       {status === "loading" && (

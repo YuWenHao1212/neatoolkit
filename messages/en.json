@@ -492,6 +492,7 @@
     "durationWarningTitle": "Video Duration Limit",
     "durationWarningOk": "OK",
     "retry": "Retry",
+    "captchaRequired": "Please complete verification to continue",
     "howToUseTitle": "How to Use",
     "steps": {
       "step1Title": "Paste Link",
