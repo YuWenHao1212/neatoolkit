@@ -19,7 +19,7 @@
     "youtubeSummaryTitle": "YouTube AI 摘要工具 — 免費影片重點摘要 | Neatoolkit",
     "youtubeSummaryDescription": "免費 YouTube AI 摘要工具，貼上影片連結即可自動產生繁體中文重點摘要。AI 快速歸納影片內容，節省觀看時間。",
     "youtubeTranslateTitle": "YouTube 字幕翻譯工具 — 免費線上翻譯影片字幕 | Neatoolkit",
-    "youtubeTranslateDescription": "免費線上 YouTube 字幕翻譯工具，將影片字幕翻譯成繁體中文、英文、日文、韓文。AI 智慧翻譯，自然流暢。"
+    "youtubeTranslateDescription": "免費線上 YouTube 字幕翻譯工具，將影片字幕翻譯成繁體中文或英文。AI 智慧翻譯，自然流暢。"
   },
   "Header": {
     "imageTools": "圖片工具",
@@ -225,7 +225,7 @@
       "youtubeSummary": "YouTube AI 摘要",
       "youtubeSummaryDesc": "AI 自動產生影片重點摘要，快速掌握影片內容",
       "youtubeTranslate": "YouTube 字幕翻譯",
-      "youtubeTranslateDesc": "將影片字幕翻譯成繁體中文、英文、日文、韓文"
+      "youtubeTranslateDesc": "將影片字幕翻譯成繁體中文或英文"
     }
   },
   "ImageToolsNav": {
@@ -507,7 +507,7 @@
       "summary": "YouTube AI 摘要",
       "summaryDesc": "AI 自動產生影片重點摘要，快速掌握影片內容",
       "translate": "YouTube 字幕翻譯",
-      "translateDesc": "將影片字幕翻譯成繁體中文、英文、日文、韓文"
+      "translateDesc": "將影片字幕翻譯成繁體中文或英文"
     }
   },
   "YouTubeSummary": {
@@ -552,7 +552,7 @@
       "subtitle": "YouTube 字幕下載",
       "subtitleDesc": "貼上連結，一鍵取得 YouTube 影片完整逐字稿",
       "translate": "YouTube 字幕翻譯",
-      "translateDesc": "將影片字幕翻譯成繁體中文、英文、日文、韓文"
+      "translateDesc": "將影片字幕翻譯成繁體中文或英文"
     }
   },
   "YouTubeTranslate": {
@@ -575,14 +575,14 @@
       "step1Title": "貼上連結",
       "step1Desc": "複製 YouTube 影片的網址，貼到上方的輸入框",
       "step2Title": "選擇語言",
-      "step2Desc": "選擇你想要翻譯的目標語言：繁體中文、英文、日文或韓文",
+      "step2Desc": "選擇你想要翻譯的目標語言：繁體中文或英文",
       "step3Title": "取得翻譯",
       "step3Desc": "AI 自動翻譯字幕內容，支援複製和下載"
     },
     "faqTitle": "常見問題",
     "faqs": {
       "q1": "支援哪些翻譯語言？",
-      "a1": "目前支援繁體中文（台灣）、英文、日文、韓文四種語言。",
+      "a1": "目前支援繁體中文（台灣）和英文。",
       "q2": "翻譯品質如何？",
       "a2": "使用 AI 翻譯引擎，翻譯結果自然流暢。但建議重要內容仍需人工校對。",
       "q3": "每天可以使用幾次？",

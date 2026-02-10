@@ -19,7 +19,7 @@
     "youtubeSummaryTitle": "YouTube AI Summary — Free Video Summary Generator | Neatoolkit",
     "youtubeSummaryDescription": "Free YouTube AI summary tool. Paste a video link to get an AI-generated summary with key points. Save time by quickly understanding video content.",
     "youtubeTranslateTitle": "YouTube Subtitle Translator — Free Online Translation | Neatoolkit",
-    "youtubeTranslateDescription": "Free online YouTube subtitle translator. Translate video subtitles to Chinese, English, Japanese, or Korean with AI-powered natural translation."
+    "youtubeTranslateDescription": "Free online YouTube subtitle translator. Translate video subtitles to Chinese or English with AI-powered natural translation."
   },
   "Header": {
     "imageTools": "Image Tools",
@@ -225,7 +225,7 @@
       "youtubeSummary": "YouTube AI Summary",
       "youtubeSummaryDesc": "AI-generated video summaries with key points",
       "youtubeTranslate": "YouTube Subtitle Translate",
-      "youtubeTranslateDesc": "Translate video subtitles to Chinese, English, Japanese, or Korean"
+      "youtubeTranslateDesc": "Translate video subtitles to Chinese or English"
     }
   },
   "ImageToolsNav": {
@@ -507,7 +507,7 @@
       "summary": "YouTube AI Summary",
       "summaryDesc": "AI-generated video summaries with key points",
       "translate": "YouTube Subtitle Translate",
-      "translateDesc": "Translate video subtitles to Chinese, English, Japanese, or Korean"
+      "translateDesc": "Translate video subtitles to Chinese or English"
     }
   },
   "YouTubeSummary": {
@@ -552,7 +552,7 @@
       "subtitle": "YouTube Subtitle Download",
       "subtitleDesc": "Paste a link to get the full transcript from any YouTube video",
       "translate": "YouTube Subtitle Translate",
-      "translateDesc": "Translate video subtitles to Chinese, English, Japanese, or Korean"
+      "translateDesc": "Translate video subtitles to Chinese or English"
     }
   },
   "YouTubeTranslate": {
@@ -575,14 +575,14 @@
       "step1Title": "Paste Link",
       "step1Desc": "Copy the YouTube video URL and paste it into the input field above",
       "step2Title": "Select Language",
-      "step2Desc": "Choose your target language: Chinese, English, Japanese, or Korean",
+      "step2Desc": "Choose your target language: Chinese or English",
       "step3Title": "Get Translation",
       "step3Desc": "AI translates the subtitle content, with options to copy or download"
     },
     "faqTitle": "FAQ",
     "faqs": {
       "q1": "What languages are supported?",
-      "a1": "Currently supports Traditional Chinese (Taiwan), English, Japanese, and Korean.",
+      "a1": "Currently supports Traditional Chinese (Taiwan) and English.",
       "q2": "How good is the translation?",
       "a2": "Uses AI translation engine for natural, fluent results. Important content should still be reviewed by a human.",
       "q3": "How many times can I use it per day?",
