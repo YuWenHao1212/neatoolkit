@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { hasLocale } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
@@ -6,6 +7,8 @@ import { notFound } from "next/navigation";
 import localFont from "next/font/local";
 import { Newsreader, Noto_Sans_TC } from "next/font/google";
 import { routing } from "@/i18n/routing";
+
+const GA_MEASUREMENT_ID = "G-ZTE1LQFM2Q";
 
 const satoshi = localFont({
   src: [
@@ -75,6 +78,25 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+        <Script
+          src="https://umami.livelystone-ee11a8ed.japaneast.azurecontainerapps.io/script.js"
+          data-website-id="b660106e-893b-433a-b62e-8cda66940c23"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={`${satoshi.variable} ${notoSansTC.variable} ${newsreader.variable} antialiased`}
       >
