@@ -94,6 +94,7 @@ export default function ImageCompress() {
         setErrorMsg(t("unknownError"));
       }
       setStatus("error");
+      setCaptchaToken(null);
     }
   }, [file, quality, captchaToken, t]);
 

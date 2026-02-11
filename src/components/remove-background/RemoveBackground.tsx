@@ -74,6 +74,7 @@ export default function RemoveBackground() {
         setErrorMsg(t("unknownError"));
       }
       setStatus("error");
+      setCaptchaToken(null);
     }
   }, [file, captchaToken, t]);
 

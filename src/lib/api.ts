@@ -97,7 +97,9 @@ export async function fetchDirectApi(
     if (error instanceof DOMException && error.name === "AbortError") {
       throw new ApiError("SERVER_WARMING_UP", 408);
     }
-    throw new ApiError("Network error. Please check your connection.", 0);
+    const msg =
+      error instanceof Error ? error.message : "Unknown error";
+    throw new ApiError(`Network error: ${msg}`, 0);
   }
 }
 

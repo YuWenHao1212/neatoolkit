@@ -171,6 +171,7 @@ export default function VideoCompress() {
         setErrorMsg(t("unknownError"));
       }
       setStatus("error");
+      setCaptchaToken(null);
     } finally {
       if (timerRef.current) clearInterval(timerRef.current);
     }
