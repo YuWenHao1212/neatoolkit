@@ -5,9 +5,8 @@ export const EXTERNAL_LINKS = {
 } as const;
 
 export const SOCIAL_LINKS = {
-  linkedin: "https://www.linkedin.com/in/yu-wen-hao/",
-  github: "https://github.com/YuWenHao1212",
-  facebook: "https://www.facebook.com/yuwenhao",
+  linkedin: "https://www.linkedin.com/in/hence/",
+  facebook: "https://www.facebook.com/wenhao.yu.116026",
 } as const;
 
 export function withUtm(url: string, source: string): string {
