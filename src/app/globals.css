@@ -11,6 +11,11 @@
   --accent: #CA8A04;
   --accent-hover: #A16207;
   --accent-light: #FEF9C3;
+  --highlight: #FBBF24;
+  --cat-image: #C2753A;
+  --cat-video: #C75461;
+  --cat-youtube: #2A8F82;
+  --cat-text: #7B5EA7;
   --border: #E8E4DD;
   --link: #0D9488;
   --link-hover: #0F766E;
@@ -26,6 +31,11 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-light: var(--accent-light);
+  --color-highlight: var(--highlight);
+  --color-cat-image: var(--cat-image);
+  --color-cat-video: var(--cat-video);
+  --color-cat-youtube: var(--cat-youtube);
+  --color-cat-text: var(--cat-text);
   --color-border: var(--border);
   --color-link: var(--link);
   --color-link-hover: var(--link-hover);

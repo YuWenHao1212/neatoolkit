@@ -201,12 +201,24 @@
     }
   },
   "Homepage": {
-    "heroTitle": "Free Online Tools",
-    "heroSubtitle": "Image compression, AI background removal, video compression, video to GIF, special fonts and more — free to use, no signup required.",
-    "imageToolsTitle": "Image Tools",
-    "videoToolsTitle": "Video Tools",
-    "textToolsTitle": "Text Tools",
-    "youtubeToolsTitle": "YouTube Tools",
+    "heroTitle": "Free Online Tools That Actually Work",
+    "heroTitlePrefix": "",
+    "heroTitleHighlight": "Free",
+    "heroTitleSuffix": " Online Tools That Actually Work",
+    "heroSubtitle": "Image compression, video conversion, text formatting, YouTube subtitles — making your workflow easier.",
+    "valueProp1": "No signup required",
+    "valueProp2": "Completely free, no hidden fees",
+    "valueProp3": "Files deleted after processing",
+    "allToolsTitle": "All Tools",
+    "allToolsSubtitle": "Carefully crafted, completely free, simple to use.",
+    "categoryToolCount": "{count} tools",
+    "featuredTool": "Featured:",
+    "categories": {
+      "image": "Image Tools",
+      "video": "Video Tools",
+      "text": "Text Tools",
+      "youtube": "YouTube Tools"
+    },
     "tools": {
       "imageCompress": "Image Compressor",
       "imageCompressDesc": "Compress JPG, PNG, WebP images to reduce file size.",
@@ -221,11 +233,11 @@
       "fbPostFormatter": "FB Post Formatter",
       "fbPostFormatterDesc": "Bold, italic, line break preservation for Facebook.",
       "youtubeSubtitle": "YouTube Subtitle Download",
-      "youtubeSubtitleDesc": "Paste a link to get the full transcript from any YouTube video",
+      "youtubeSubtitleDesc": "Paste a link to get the full transcript from any YouTube video.",
       "youtubeSummary": "YouTube AI Summary",
-      "youtubeSummaryDesc": "AI-generated video summaries with key points",
+      "youtubeSummaryDesc": "AI-generated video summaries with key points.",
       "youtubeTranslate": "YouTube Subtitle Translate",
-      "youtubeTranslateDesc": "Translate video subtitles to Chinese or English"
+      "youtubeTranslateDesc": "Translate video subtitles to Chinese or English."
     }
   },
   "ImageToolsNav": {
@@ -638,6 +650,61 @@
       "summary": "YouTube AI Summary",
       "summaryDesc": "AI-generated video summaries with key points"
     }
+  },
+  "About": {
+    "title": "About Neatoolkit",
+    "metaDescription": "About Neatoolkit — free online tools with no signup, no watermark, and no hidden fees.",
+    "intro": "Neatoolkit is a collection of free online tools built for everyday tasks — image compression, video processing, text formatting, and YouTube utilities.",
+    "whyTitle": "Why Neatoolkit?",
+    "whyContent": "Most \"free\" online tools are free in name only. They add watermarks, require signups, or lock core features behind paywalls. Neatoolkit is different: every tool is genuinely free, with no accounts, no watermarks, and no hidden costs.",
+    "howTitle": "How It Works",
+    "howContent": "Text tools (font generator, FB post formatter) run entirely in your browser — nothing leaves your device. Image, video, and YouTube tools are processed on our servers, but all uploaded files are deleted immediately after processing. We do not store your data.",
+    "whoTitle": "Who Built This?",
+    "whoContent": "Neatoolkit is built and maintained by Yu-Wen Hao, a solo developer based in Taiwan. If you have feedback or suggestions, feel free to reach out.",
+    "contactLabel": "Contact",
+    "contactEmail": "hi@neatoolkit.com"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "metaDescription": "Neatoolkit Privacy Policy — how we handle your data, files, and privacy.",
+    "lastUpdated": "Last updated: February 2026",
+    "introTitle": "Overview",
+    "introContent": "Neatoolkit is committed to protecting your privacy. This policy explains how we handle data when you use our tools.",
+    "collectionTitle": "What We Collect",
+    "collectionContent": "We do not require registration or login. We do not collect personal information such as names, emails, or phone numbers.",
+    "textToolsTitle": "Text Tools (Browser-Only)",
+    "textToolsContent": "The Font Generator and FB Post Formatter run entirely in your browser. No data is sent to our servers. Everything stays on your device.",
+    "fileToolsTitle": "Image & Video Tools (Server Processing)",
+    "fileToolsContent": "Image compression, background removal, video compression, and video-to-GIF tools upload files to our servers for processing. All files are deleted immediately after processing is complete. We do not store, review, or share your files.",
+    "youtubeToolsTitle": "YouTube Tools (API Processing)",
+    "youtubeToolsContent": "YouTube subtitle, summary, and translation tools send the video URL to our backend API to fetch and process subtitles. We do not store the video content or subtitles after the response is delivered.",
+    "analyticsTitle": "Analytics",
+    "analyticsContent": "We use privacy-friendly analytics to understand how our tools are used (e.g., page views, tool usage counts). We do not track individual users or use third-party ad networks.",
+    "captchaTitle": "CAPTCHA",
+    "captchaContent": "YouTube tools use Cloudflare Turnstile for bot protection after a certain number of uses per day. Turnstile is a privacy-preserving CAPTCHA that does not track users across websites.",
+    "cookiesTitle": "Cookies",
+    "cookiesContent": "We use minimal cookies for essential functionality (e.g., language preference). We do not use tracking cookies or sell data to third parties.",
+    "changesTitle": "Changes",
+    "changesContent": "We may update this policy as our tools evolve. Significant changes will be noted on this page."
+  },
+  "Terms": {
+    "title": "Terms of Service",
+    "metaDescription": "Neatoolkit Terms of Service — usage terms for our free online tools.",
+    "lastUpdated": "Last updated: February 2026",
+    "introTitle": "Agreement",
+    "introContent": "By using Neatoolkit, you agree to these terms. If you do not agree, please do not use our tools.",
+    "useTitle": "Use of Tools",
+    "useContent": "Neatoolkit provides free online tools for personal and commercial use. You may use the tools and their output freely. You are responsible for the content you process through our tools.",
+    "ipTitle": "Intellectual Property",
+    "ipContent": "The Neatoolkit website, brand, and tool implementations are owned by Neatoolkit. Content you create or process using our tools belongs to you.",
+    "availabilityTitle": "Availability",
+    "availabilityContent": "We strive to keep our tools available, but we do not guarantee uptime or uninterrupted service. Tools may be modified, updated, or discontinued at any time.",
+    "limitsTitle": "Usage Limits",
+    "limitsContent": "Some tools have daily usage limits to ensure fair access for all users. These limits may change over time.",
+    "disclaimerTitle": "Disclaimer",
+    "disclaimerContent": "Neatoolkit is provided \"as is\" without warranties of any kind. We are not liable for any damages resulting from the use of our tools, including data loss or inaccurate output.",
+    "changesTitle": "Changes",
+    "changesContent": "We may update these terms as needed. Continued use of Neatoolkit after changes constitutes acceptance of the updated terms."
   },
   "LocaleSwitcher": {
     "label": "Language",

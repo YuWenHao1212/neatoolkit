@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 
 const IMAGE_TOOLS = [
-  { href: "/image/compress", key: "imageCompress" },
   { href: "/image/remove-background", key: "removeBackground" },
+  { href: "/image/compress", key: "imageCompress" },
 ] as const;
 
 export default function ImageToolsNav() {

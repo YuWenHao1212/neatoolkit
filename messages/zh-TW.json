@@ -201,12 +201,24 @@
     }
   },
   "Homepage": {
-    "heroTitle": "免費線上工具",
-    "heroSubtitle": "圖片壓縮、AI 去背、影片壓縮、影片轉 GIF、特殊字體等實用工具，免費使用，無需註冊。",
-    "imageToolsTitle": "圖片工具",
-    "videoToolsTitle": "影片工具",
-    "textToolsTitle": "文字工具",
-    "youtubeToolsTitle": "YouTube 工具",
+    "heroTitle": "真正免費的線上工具",
+    "heroTitlePrefix": "真正",
+    "heroTitleHighlight": "免費",
+    "heroTitleSuffix": "的線上工具",
+    "heroSubtitle": "圖片壓縮、影片轉檔、文字排版、YouTube 字幕，讓你的工作更輕鬆。",
+    "valueProp1": "不需要註冊",
+    "valueProp2": "完全免費，無隱藏收費",
+    "valueProp3": "處理完立即刪除檔案",
+    "allToolsTitle": "所有工具",
+    "allToolsSubtitle": "精選打造，全部免費，簡單好用。",
+    "categoryToolCount": "{count} 個工具",
+    "featuredTool": "熱門工具：",
+    "categories": {
+      "image": "圖片工具",
+      "video": "影片工具",
+      "text": "文字工具",
+      "youtube": "YouTube 工具"
+    },
     "tools": {
       "imageCompress": "圖片壓縮",
       "imageCompressDesc": "壓縮 JPG、PNG、WebP 圖片，縮小檔案大小。",
@@ -221,11 +233,11 @@
       "fbPostFormatter": "FB 貼文排版",
       "fbPostFormatterDesc": "粗體、斜體、換行保留，一鍵排版。",
       "youtubeSubtitle": "YouTube 字幕下載",
-      "youtubeSubtitleDesc": "貼上連結，一鍵取得 YouTube 影片完整逐字稿",
+      "youtubeSubtitleDesc": "貼上連結，一鍵取得 YouTube 影片完整逐字稿。",
       "youtubeSummary": "YouTube AI 摘要",
-      "youtubeSummaryDesc": "AI 自動產生影片重點摘要，快速掌握影片內容",
+      "youtubeSummaryDesc": "AI 自動產生影片重點摘要，快速掌握影片內容。",
       "youtubeTranslate": "YouTube 字幕翻譯",
-      "youtubeTranslateDesc": "將影片字幕翻譯成繁體中文或英文"
+      "youtubeTranslateDesc": "將影片字幕翻譯成繁體中文或英文。"
     }
   },
   "ImageToolsNav": {
@@ -638,6 +650,61 @@
       "summary": "YouTube AI 摘要",
       "summaryDesc": "AI 自動產生影片重點摘要，快速掌握影片內容"
     }
+  },
+  "About": {
+    "title": "關於 Neatoolkit",
+    "metaDescription": "關於 Neatoolkit — 免費線上工具，無需註冊、無浮水印、無隱藏收費。",
+    "intro": "Neatoolkit 是一組為日常需求打造的免費線上工具 — 圖片壓縮、影片處理、文字排版、YouTube 字幕工具。",
+    "whyTitle": "為什麼做 Neatoolkit？",
+    "whyContent": "市面上大多數「免費」線上工具其實並不免費。它們會加浮水印、要求註冊，或把核心功能鎖在付費牆後面。Neatoolkit 不同：每個工具都真正免費，不需要帳號、沒有浮水印、沒有隱藏費用。",
+    "howTitle": "運作方式",
+    "howContent": "文字工具（特殊字體產生器、FB 貼文排版）完全在你的瀏覽器中運行，資料不會離開你的裝置。圖片、影片和 YouTube 工具需要在我們的伺服器上處理，但所有上傳的檔案在處理完成後會立即刪除。我們不會儲存你的資料。",
+    "whoTitle": "誰做的？",
+    "whoContent": "Neatoolkit 由居住在台灣的獨立開發者 Yu-Wen Hao 打造和維護。如果你有任何建議或回饋，歡迎聯繫。",
+    "contactLabel": "聯絡信箱",
+    "contactEmail": "hi@neatoolkit.com"
+  },
+  "Privacy": {
+    "title": "隱私權政策",
+    "metaDescription": "Neatoolkit 隱私權政策 — 我們如何處理你的資料、檔案與隱私。",
+    "lastUpdated": "最後更新：2026 年 2 月",
+    "introTitle": "概述",
+    "introContent": "Neatoolkit 致力於保護你的隱私。本政策說明你使用我們工具時的資料處理方式。",
+    "collectionTitle": "我們收集什麼",
+    "collectionContent": "我們不需要註冊或登入。我們不收集姓名、電子郵件或電話號碼等個人資料。",
+    "textToolsTitle": "文字工具（純瀏覽器端）",
+    "textToolsContent": "特殊字體產生器和 FB 貼文排版工具完全在你的瀏覽器中運行，不會將任何資料傳送到我們的伺服器。所有處理都在你的裝置上完成。",
+    "fileToolsTitle": "圖片與影片工具（伺服器處理）",
+    "fileToolsContent": "圖片壓縮、AI 去背、影片壓縮和影片轉 GIF 工具會將檔案上傳到我們的伺服器進行處理。所有檔案在處理完成後立即刪除，我們不會儲存、檢視或分享你的檔案。",
+    "youtubeToolsTitle": "YouTube 工具（API 處理）",
+    "youtubeToolsContent": "YouTube 字幕下載、AI 摘要和字幕翻譯工具會將影片網址傳送到後端 API 以擷取和處理字幕。回應送出後，我們不會儲存影片內容或字幕。",
+    "analyticsTitle": "分析工具",
+    "analyticsContent": "我們使用注重隱私的分析工具來了解工具的使用情況（例如頁面瀏覽次數、工具使用次數）。我們不追蹤個別使用者，也不使用第三方廣告網路。",
+    "captchaTitle": "人機驗證",
+    "captchaContent": "YouTube 工具在每日使用一定次數後，會使用 Cloudflare Turnstile 進行人機驗證。Turnstile 是一種保護隱私的驗證方式，不會跨網站追蹤使用者。",
+    "cookiesTitle": "Cookie",
+    "cookiesContent": "我們僅使用必要功能所需的 Cookie（例如語言偏好設定）。我們不使用追蹤 Cookie，也不會將資料出售給第三方。",
+    "changesTitle": "政策變更",
+    "changesContent": "我們可能會隨著工具的更新而修改本政策。重大變更會在本頁面上註明。"
+  },
+  "Terms": {
+    "title": "服務條款",
+    "metaDescription": "Neatoolkit 服務條款 — 免費線上工具的使用條款。",
+    "lastUpdated": "最後更新：2026 年 2 月",
+    "introTitle": "同意條款",
+    "introContent": "使用 Neatoolkit 即表示你同意本條款。如不同意，請勿使用我們的工具。",
+    "useTitle": "工具使用",
+    "useContent": "Neatoolkit 提供免費的線上工具，可用於個人和商業用途。你可以自由使用工具及其產出。你需要對透過我們工具處理的內容負責。",
+    "ipTitle": "智慧財產權",
+    "ipContent": "Neatoolkit 的網站、品牌和工具實作歸 Neatoolkit 所有。你使用我們工具所創建或處理的內容歸你所有。",
+    "availabilityTitle": "服務可用性",
+    "availabilityContent": "我們盡力保持工具可用，但不保證服務的持續運作。工具可能隨時被修改、更新或停用。",
+    "limitsTitle": "使用限制",
+    "limitsContent": "部分工具設有每日使用次數限制，以確保所有使用者的公平使用。這些限制可能會隨時間調整。",
+    "disclaimerTitle": "免責聲明",
+    "disclaimerContent": "Neatoolkit 以「現狀」提供，不提供任何形式的保證。對於使用我們工具所造成的任何損害（包括資料遺失或不準確的輸出），我們不承擔責任。",
+    "changesTitle": "條款變更",
+    "changesContent": "我們可能會視需要更新本條款。在變更後繼續使用 Neatoolkit 即表示你接受更新後的條款。"
   },
   "LocaleSwitcher": {
     "label": "語言",

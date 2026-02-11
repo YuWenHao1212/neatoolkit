@@ -45,16 +45,16 @@ export default async function Header() {
       subItems: videoToolItems,
     },
     {
-      href: "/text/font-generator",
-      label: t("textTools"),
-      active: true,
-      subItems: textToolItems,
-    },
-    {
       href: "/youtube/subtitle",
       label: t("youtubeTools"),
       active: true,
       subItems: youtubeToolItems,
+    },
+    {
+      href: "/text/font-generator",
+      label: t("textTools"),
+      active: true,
+      subItems: textToolItems,
     },
     { href: "#", label: t("careerTools") },
   ];
@@ -66,9 +66,14 @@ export default async function Header() {
           <span className="flex h-8 w-8 items-center justify-center rounded-md bg-accent font-serif text-lg font-bold text-white">
             N
           </span>
-          <span className="text-lg font-semibold text-ink-900">
-            Neatoolkit
-          </span>
+          <div className="flex flex-col">
+            <span className="text-lg font-semibold leading-tight text-ink-900">
+              Neatoolkit
+            </span>
+            <span className="self-end text-[10px] leading-tight text-ink-600">
+              by <span className="font-semibold">Wenhao</span>
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -82,14 +87,14 @@ export default async function Header() {
             items={videoToolItems}
             active
           />
-          <TextToolsDropdown
-            label={t("textTools")}
-            items={textToolItems}
-            active
-          />
           <YouTubeToolsDropdown
             label={t("youtubeTools")}
             items={youtubeToolItems}
+            active
+          />
+          <TextToolsDropdown
+            label={t("textTools")}
+            items={textToolItems}
             active
           />
           <LocaleSwitcher />

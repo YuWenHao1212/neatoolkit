@@ -76,7 +76,7 @@ export default function MobileNav({ navLinks }: MobileNavProps) {
             onClick={() => setIsOpen(false)}
             aria-hidden="true"
           />
-          <nav className="fixed left-0 right-0 top-[57px] z-50 border-b border-border bg-white px-6 py-4">
+          <nav className="fixed left-0 right-0 top-[57px] z-50 max-h-[calc(100dvh-57px)] overflow-y-auto border-b border-border bg-white px-6 py-4">
             <ul className="flex flex-col gap-1">
               {navLinks.map(({ href, label, active, subItems }) => (
                 <li key={label}>

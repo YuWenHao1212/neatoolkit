@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { toolCategories, categoryColors } from "@/lib/tools";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import CategoryCard from "@/components/home/CategoryCard";
+import ToolCard from "@/components/home/ToolCard";
+import HeroDecorations from "@/components/home/HeroDecorations";
+import LucideIcon from "@/components/home/LucideIcon";
 
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -35,38 +39,6 @@ export async function generateMetadata({
   };
 }
 
-const toolCategories = [
-  {
-    titleKey: "imageToolsTitle" as const,
-    tools: [
-      { key: "imageCompress" as const, href: "/image/compress" },
-      { key: "removeBackground" as const, href: "/image/remove-background" },
-    ],
-  },
-  {
-    titleKey: "videoToolsTitle" as const,
-    tools: [
-      { key: "videoCompress" as const, href: "/video/compress" },
-      { key: "videoToGif" as const, href: "/video/to-gif" },
-    ],
-  },
-  {
-    titleKey: "textToolsTitle" as const,
-    tools: [
-      { key: "fontGenerator" as const, href: "/text/font-generator" },
-      { key: "fbPostFormatter" as const, href: "/text/fb-post-formatter" },
-    ],
-  },
-  {
-    titleKey: "youtubeToolsTitle" as const,
-    tools: [
-      { key: "youtubeSubtitle" as const, href: "/youtube/subtitle" },
-      { key: "youtubeSummary" as const, href: "/youtube/summary" },
-      { key: "youtubeTranslate" as const, href: "/youtube/translate" },
-    ],
-  },
-];
-
 export default async function HomePage({
   params,
 }: {
@@ -91,6 +63,42 @@ export default async function HomePage({
     },
   };
 
+  const categories = toolCategories.map((cat) => ({
+    key: cat.key,
+    icon: cat.icon,
+    color: cat.color,
+    title: t(`categories.${cat.key}`),
+    href: cat.tools[0].href,
+    tools: cat.tools.map((tool) => ({
+      key: tool.key,
+      href: tool.href,
+      icon: tool.icon,
+      title: t(`tools.${tool.key}`),
+      description: t(`tools.${tool.key}Desc`),
+    })),
+  }));
+
+  const categoryDescriptions: Record<string, string[]> = {
+    image: categories.find((c) => c.key === "image")?.tools.map((t) => t.title) ?? [],
+    video: categories.find((c) => c.key === "video")?.tools.map((t) => t.title) ?? [],
+    youtube: categories.find((c) => c.key === "youtube")?.tools.map((t) => t.title) ?? [],
+    text: categories.find((c) => c.key === "text")?.tools.map((t) => t.title) ?? [],
+  };
+
+  // First tool in each category is the featured one
+  const featuredTools: Record<string, string> = {
+    image: categories.find((c) => c.key === "image")?.tools[0]?.title ?? "",
+    video: categories.find((c) => c.key === "video")?.tools[0]?.title ?? "",
+    youtube: categories.find((c) => c.key === "youtube")?.tools[0]?.title ?? "",
+    text: categories.find((c) => c.key === "text")?.tools[0]?.title ?? "",
+  };
+
+  const trustBadges = [
+    { icon: "UserX", text: t("valueProp1") },
+    { icon: "BadgeCheck", text: t("valueProp2") },
+    { icon: "Trash2", text: t("valueProp3") },
+  ];
+
   return (
     <div className="flex min-h-screen flex-col">
       <script
@@ -101,44 +109,97 @@ export default async function HomePage({
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="pb-8 pt-16 text-center md:pt-20">
-          <div className="mx-auto max-w-4xl px-6 2xl:max-w-5xl">
-            <h1 className="font-serif text-4xl font-bold leading-tight text-ink-900 md:text-5xl lg:text-6xl">
-              {t("heroTitle")}
+        <section className="relative pb-10 pt-16 md:pb-14 md:pt-24">
+          <HeroDecorations />
+          <div className="relative mx-auto max-w-3xl px-6 text-center">
+            <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-ink-900 md:text-4xl lg:text-[52px] lg:leading-tight">
+              {t("heroTitlePrefix")}
+              <span className="relative inline-block px-1">
+                {t("heroTitleHighlight")}
+                <svg
+                  className="absolute -bottom-1 left-[-8%] h-[35%] w-[116%] lg:-bottom-2"
+                  viewBox="0 0 100 30"
+                  fill="none"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M0 14C6 4 18 1 34 7C50 13 58 3 74 9C88 14 96 7 100 12L99 28C94 20 86 24 74 20C58 14 50 26 34 20C18 14 6 22 0 28Z"
+                    fill="#d3050b"
+                    opacity="0.75"
+                  />
+                </svg>
+              </span>
+              {t("heroTitleSuffix")}
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-ink-600 md:text-xl">
+            <p className="mx-auto mt-4 max-w-xl text-[17px] leading-relaxed text-ink-600 md:text-lg">
               {t("heroSubtitle")}
             </p>
+
+            {/* Trust Badges */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-medium text-ink-600">
+              {trustBadges.map(({ icon, text }, i) => (
+                <span key={text} className="flex items-center gap-1.5">
+                  {i > 0 && (
+                    <span className="mr-6 hidden h-4 w-px bg-cream-300 sm:block" />
+                  )}
+                  <LucideIcon name={icon} size={14} strokeWidth={1.8} />
+                  {text}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Tool Categories */}
-        <section className="pb-20 pt-8">
-          <div className="mx-auto max-w-4xl px-6">
-            <div className="space-y-12">
-              {toolCategories.map(({ titleKey, tools }) => (
-                <div key={titleKey}>
-                  <h2 className="font-serif text-2xl font-bold text-ink-900 md:text-3xl">
-                    {t(titleKey)}
-                  </h2>
-                  <div className="mt-6 grid gap-6 sm:grid-cols-2">
-                    {tools.map(({ key, href }) => (
-                      <Link
-                        key={key}
-                        href={href}
-                        className="group rounded-xl border border-border bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-accent/30 hover:shadow-lg"
-                      >
-                        <h3 className="text-lg font-semibold text-ink-900 group-hover:text-accent">
-                          {t(`tools.${key}`)}
-                        </h3>
-                        <p className="mt-2 text-base leading-relaxed text-ink-600">
-                          {t(`tools.${key}Desc`)}
-                        </p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
+        {/* Category Cards */}
+        <section className="px-6">
+          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-5 lg:grid-cols-4">
+            {categories.map((cat) => {
+              const colors = categoryColors[cat.key];
+              return (
+                <CategoryCard
+                  key={cat.key}
+                  href={cat.href}
+                  icon={cat.icon}
+                  title={cat.title}
+                  toolCount={t("categoryToolCount", { count: cat.tools.length })}
+                  description={categoryDescriptions[cat.key]?.join("、") ?? ""}
+                  colorClass={colors.bg}
+                  featuredLabel={t("featuredTool")}
+                  featuredTool={featuredTools[cat.key] ?? ""}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* All Tools */}
+        <section className="px-6 pb-20 pt-10 md:pt-14">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-8 text-center">
+              <h2 className="font-serif text-2xl font-semibold text-ink-900 md:text-3xl">
+                {t("allToolsTitle")}
+              </h2>
+              <p className="mt-2 text-base text-ink-600">
+                {t("allToolsSubtitle")}
+              </p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {categories.flatMap((cat) => {
+                const colors = categoryColors[cat.key];
+                return cat.tools.map((tool) => (
+                  <ToolCard
+                    key={tool.key}
+                    href={tool.href}
+                    icon={tool.icon}
+                    title={tool.title}
+                    description={tool.description}
+                    iconColorClass={colors.text}
+                    iconBgClass={colors.iconBg}
+                  />
+                ));
+              })}
             </div>
           </div>
         </section>
