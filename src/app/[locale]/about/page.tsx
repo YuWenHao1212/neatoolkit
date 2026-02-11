@@ -92,7 +92,7 @@ export default async function AboutPage({
             </h2>
 
             <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
-              <div className="flex shrink-0 flex-col items-center gap-3">
+              <div className="flex shrink-0 flex-col items-center gap-5">
                 <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-cream-300">
                   <Image
                     src="/images/hao.webp"
