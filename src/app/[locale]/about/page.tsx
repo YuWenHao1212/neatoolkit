@@ -102,10 +102,7 @@ export default async function AboutPage({
                 />
               </div>
               <div>
-                <p className="text-lg font-semibold text-ink-900">
-                  {t("authorGreeting")}
-                </p>
-                <p className="mt-2 leading-relaxed text-ink-600">
+                <p className="leading-relaxed text-ink-600">
                   {t("authorBio")}
                 </p>
                 <p className="mt-2 leading-relaxed text-ink-600">
