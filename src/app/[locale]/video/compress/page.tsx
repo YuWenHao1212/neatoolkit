@@ -30,6 +30,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/video/compress`,
       languages: {
+        "x-default": "/zh-TW/video/compress",
         "zh-TW": "/zh-TW/video/compress",
         en: "/en/video/compress",
       },

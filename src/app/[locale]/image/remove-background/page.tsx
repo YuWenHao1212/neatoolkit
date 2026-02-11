@@ -30,6 +30,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/image/remove-background`,
       languages: {
+        "x-default": "/zh-TW/image/remove-background",
         "zh-TW": "/zh-TW/image/remove-background",
         en: "/en/image/remove-background",
       },

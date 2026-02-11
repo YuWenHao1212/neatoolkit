@@ -30,6 +30,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/text/font-generator`,
       languages: {
+        "x-default": "/zh-TW/text/font-generator",
         "zh-TW": "/zh-TW/text/font-generator",
         en: "/en/text/font-generator",
       },

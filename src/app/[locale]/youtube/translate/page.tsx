@@ -30,6 +30,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/youtube/translate`,
       languages: {
+        "x-default": "/zh-TW/youtube/translate",
         "zh-TW": "/zh-TW/youtube/translate",
         en: "/en/youtube/translate",
       },

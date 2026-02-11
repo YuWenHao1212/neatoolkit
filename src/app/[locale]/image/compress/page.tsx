@@ -30,6 +30,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/image/compress`,
       languages: {
+        "x-default": "/zh-TW/image/compress",
         "zh-TW": "/zh-TW/image/compress",
         en: "/en/image/compress",
       },

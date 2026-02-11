@@ -22,6 +22,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/privacy`,
       languages: {
+        "x-default": "/zh-TW/privacy",
         "zh-TW": "/zh-TW/privacy",
         en: "/en/privacy",
       },

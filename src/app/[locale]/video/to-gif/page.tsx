@@ -30,6 +30,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/video/to-gif`,
       languages: {
+        "x-default": "/zh-TW/video/to-gif",
         "zh-TW": "/zh-TW/video/to-gif",
         en: "/en/video/to-gif",
       },

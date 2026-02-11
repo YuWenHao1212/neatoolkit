@@ -30,6 +30,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/text/fb-post-formatter`,
       languages: {
+        "x-default": "/zh-TW/text/fb-post-formatter",
         "zh-TW": "/zh-TW/text/fb-post-formatter",
         en: "/en/text/fb-post-formatter",
       },

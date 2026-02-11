@@ -30,6 +30,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/youtube/subtitle`,
       languages: {
+        "x-default": "/zh-TW/youtube/subtitle",
         "zh-TW": "/zh-TW/youtube/subtitle",
         en: "/en/youtube/subtitle",
       },
