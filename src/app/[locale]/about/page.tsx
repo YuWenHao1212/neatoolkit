@@ -91,7 +91,7 @@ export default async function AboutPage({
               {t("authorTitle")}
             </h2>
 
-            <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start">
+            <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
               <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-cream-300">
                 <Image
                   src="/images/hao.webp"
