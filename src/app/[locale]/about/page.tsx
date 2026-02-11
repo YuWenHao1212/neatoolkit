@@ -92,14 +92,17 @@ export default async function AboutPage({
             </h2>
 
             <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-cream-300">
-                <Image
-                  src="/images/hao.webp"
-                  alt="Yu-Wen Hao"
-                  width={80}
-                  height={80}
-                  className="h-full w-full object-cover"
-                />
+              <div className="flex shrink-0 flex-col items-center gap-3">
+                <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-cream-300">
+                  <Image
+                    src="/images/hao.webp"
+                    alt="Yu-Wen Hao"
+                    width={80}
+                    height={80}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <SocialLinks />
               </div>
               <div>
                 <p className="text-lg leading-relaxed text-ink-600">
@@ -108,7 +111,6 @@ export default async function AboutPage({
                 <p className="mt-2 text-lg leading-relaxed text-ink-600">
                   {t("authorBio2")}
                 </p>
-                <SocialLinks className="mt-4" />
               </div>
             </div>
 
