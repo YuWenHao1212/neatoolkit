@@ -64,6 +64,24 @@ export default async function HomePage({
     },
   };
 
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Neatoolkit",
+    url: "https://neatoolkit.com",
+    inLanguage: locale === "zh-TW" ? "zh-TW" : "en",
+    description: t.raw("heroSubtitle"),
+  };
+
+  const siteNavSchema = {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    name: toolCategories.map((cat) => t(`categories.${cat.key}`)),
+    url: toolCategories.map(
+      (cat) => `https://neatoolkit.com/${locale}${cat.tools[0].href}`,
+    ),
+  };
+
   const categories = toolCategories.map((cat) => ({
     key: cat.key,
     icon: cat.icon,
@@ -105,6 +123,14 @@ export default async function HomePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavSchema) }}
       />
       <Header />
 
