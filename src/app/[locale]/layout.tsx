@@ -79,6 +79,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
+        <meta name="google-site-verification" content="Ov5HY7PsGC3RY_L-U9YKGiueHZlXOkaL43_abfbzxx4" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
