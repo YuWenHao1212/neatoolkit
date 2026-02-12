@@ -498,7 +498,7 @@
       "noSubtitles": "No subtitles available for this video",
       "videoUnavailable": "Video is unavailable",
       "fetchFailed": "Failed to fetch subtitles. Please try again later.",
-      "tooManyRequests": "Daily usage limit reached. Please try again tomorrow.",
+      "tooManyRequests": "To keep this service free for everyone, your daily quota has been reached. It resets automatically tomorrow.",
       "durationExceeded": "This video exceeds the 60-minute limit. Please try a shorter video."
     },
     "durationWarningTitle": "Video Duration Limit",
@@ -555,7 +555,7 @@
       "noSubtitles": "No subtitles available for this video",
       "videoUnavailable": "Video is unavailable",
       "fetchFailed": "Failed to fetch subtitles. Please try again later.",
-      "tooManyRequests": "Daily usage limit reached. Please try again tomorrow.",
+      "tooManyRequests": "To keep this service free for everyone, your daily quota has been reached. It resets automatically tomorrow.",
       "durationExceeded": "This video exceeds the 60-minute limit. Please try a shorter video."
     },
     "durationWarningTitle": "Video Duration Limit",
@@ -612,7 +612,7 @@
       "noSubtitles": "No subtitles available for this video. Translation is not possible.",
       "videoUnavailable": "Video is unavailable",
       "fetchFailed": "Failed to fetch subtitles. Please try again later.",
-      "tooManyRequests": "Daily usage limit reached. Please try again tomorrow.",
+      "tooManyRequests": "To keep this service free for everyone, your daily quota has been reached. It resets automatically tomorrow.",
       "durationExceeded": "This video exceeds the 60-minute limit. Please try a shorter video."
     },
     "durationWarningTitle": "Video Duration Limit",

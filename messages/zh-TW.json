@@ -498,7 +498,7 @@
       "noSubtitles": "此影片沒有可用的字幕",
       "videoUnavailable": "影片無法存取",
       "fetchFailed": "取得字幕失敗，請稍後再試",
-      "tooManyRequests": "今日使用次數已達上限，請明天再試",
+      "tooManyRequests": "為確保所有人都能使用，每日免費額度已用完，明天將自動恢復",
       "durationExceeded": "此影片超過 60 分鐘，無法處理。請選擇較短的影片。"
     },
     "durationWarningTitle": "影片長度超過限制",
@@ -555,7 +555,7 @@
       "noSubtitles": "此影片沒有可用的字幕，無法產生摘要",
       "videoUnavailable": "影片無法存取",
       "fetchFailed": "取得字幕失敗，請稍後再試",
-      "tooManyRequests": "今日使用次數已達上限，請明天再試",
+      "tooManyRequests": "為確保所有人都能使用，每日免費額度已用完，明天將自動恢復",
       "durationExceeded": "此影片超過 60 分鐘，無法處理。請選擇較短的影片。"
     },
     "durationWarningTitle": "影片長度超過限制",
@@ -612,7 +612,7 @@
       "noSubtitles": "此影片沒有可用的字幕，無法進行翻譯",
       "videoUnavailable": "影片無法存取",
       "fetchFailed": "取得字幕失敗，請稍後再試",
-      "tooManyRequests": "今日使用次數已達上限，請明天再試",
+      "tooManyRequests": "為確保所有人都能使用，每日免費額度已用完，明天將自動恢復",
       "durationExceeded": "此影片超過 60 分鐘，無法處理。請選擇較短的影片。"
     },
     "durationWarningTitle": "影片長度超過限制",
