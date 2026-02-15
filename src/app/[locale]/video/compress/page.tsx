@@ -22,6 +22,11 @@ export async function generateMetadata({
   return {
     title: t("videoCompressTitle"),
     description: t("videoCompressDescription"),
+    robots: {
+      index: true,
+      follow: true,
+      "max-video-preview": 0,
+    },
     openGraph: {
       title: t("videoCompressTitle"),
       description: t("videoCompressDescription"),
